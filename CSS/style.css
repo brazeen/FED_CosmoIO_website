@@ -1,8 +1,30 @@
-.header .h1 {
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+header {
     font-family: 'Orbitron', sans-serif;
-    background-color: black;
+    /*when the person scrolls down, the menu stays on top for easy access*/
+    position:fixed;
+    z-index: 1000;
+    /*background colour of nav bar*/
+    background: #1a1e2f;
+    /*height of the nav bar*/
+    height: 81px;
+    /*full width of the page*/
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*colour of text*/
     color: white;
 }
 
 
 
+/*------------------------------------------------NAV----------------------------------------------------------------*/
+nav{
+    
+}
