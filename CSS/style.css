@@ -169,3 +169,32 @@ body {
     text-shadow: -2px 2px 4px #000; /*Creates a drop shadow to show the category text better*/
     z-index: 100;/*Pushes text infront of the overlay to prevent getting overlapped*/
 }
+.difficulty-category{
+    width: 100%;
+    padding: 60px 0;/*60px top bottom padding, 0 left right padding*/
+    display: flex;
+    justify-content: center;
+    column-gap: 30px;
+    flex-wrap: wrap;
+}
+.difficulty-category-box {
+    width: 120px;
+    height: 120px;
+    background-color: gray; /*In case no image is shown, a background colour will still fill the box.*/
+    background-repeat: no-repeat;
+    background-size: cover; /*This helps to resize the images in the box to fit nicely*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;/*Remove underline undertext*/
+    position: relative;/*For white-overlay, if not, overlay will cover the whole page*/
+}
+.difficulty-category-box:nth-child(2){/*Why not 1 is because the text "Select a category" is also considered a nth child and will receive the bg image if set to 1*/
+    background-image: url(../Assets/Mathematics.jpg);
+}
+.difficulty-category-box:nth-child(3){
+    background-image: url(../Assets/General.jpg);
+}
+.difficulty-category-box:nth-child(4){
+    background-image: url(../Assets/Music.jpg);
+}
