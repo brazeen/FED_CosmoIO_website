@@ -1,30 +1,109 @@
-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
+*{
+    /*space inside element between content and border*/
+    padding: 0;
+    /*space outside element between content and border*/
+    margin: 0;
+    /*removes the styling eg.bulletpoints on lists*/
+    list-style: none;
+    /*removes the text deco like underlines on links*/
+    text-decoration: none;
 }
 
-header {
+/*when link back to top of page scroll is smooth*/
+html{
+    scroll-behavior: smooth;
+}
+
+/*------------------------------------------------NAV----------------------------------------------------------------*/
+nav {
     font-family: 'Orbitron', sans-serif;
     /*when the person scrolls down, the menu stays on top for easy access*/
     position:fixed;
     z-index: 1000;
-    /*background colour of nav bar*/
-    background: #1a1e2f;
     /*height of the nav bar*/
-    height: 81px;
+    height: 100px;
     /*full width of the page*/
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    /*colour of text*/
-    color: white;
+    
+}
+/*------------------------------------------------BODY----------------------------------------------------------------*/
+body {
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
 }
 
+/*------------------------------------------------MAIN HOME----------------------------------------------------------------*/
+.homemain {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    min-width: 100vw;
+}
 
+/*this is the 3d space canvas so it always needs to be fixed position and under everything else*/
+#homebg {
+    z-index: -1;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
 
-/*------------------------------------------------NAV----------------------------------------------------------------*/
-nav{
-    
+.homealltextcontainer {
+    /*center every element of the home container*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /*column so the texts can be on top of one another, not beside*/
+    flex-direction: column;
+    /*make it roughly less than 50% of the width and height*/
+    min-height: 30vh;
+    min-width: 50vw;
+    /*add some margin around it*/
+    margin: 5% auto;
+}
+/*this is the heading that says cosmo.IO*/
+.homeheading {
+    /*change the big words font to this*/
+    font-family: 'Orbitron', sans-serif;
+    /*change text colour to white*/
+    color: white;
+    /*when hovered over, put a nice glow over the text. this works by using 6 shadows with increasing blur each time, making it seem like neon*/
+    text-shadow: 0 0 10px #ffffff,
+                 0 0 20px #0f52e2,
+                 0 0 40px #ffffff,
+                 0 0 80px #0f52e2,
+                 0 0 120px #ffffff,
+                 0 0 160px #0f52e2;
+    /*change the font size of the heading*/
+    font-size: 5vw;
+}
+/*this is the text that says Answer right, fuel the flight! Get the crew back to earth safely.*/
+.hometext {
+    /*change text colour to white*/
+    color: white;
+    font-size: 1vw;
+}
+/*this is the Play button*/
+.homeplaybutton {
+    /*font, colour, letter spacing, and outline text*/
+    color: #ffffff;
+    background: #8213dd;
+    letter-spacing: 1px;
+    font-size: 14px;
+    /*some styling to make the button a pill shape*/
+    padding: 0.5em 1em;
+    margin: 0.25em;
+    border-radius: 1.5em;
+    /*transition for the hover effects later*/
+    transition: 0.5s;
+}
+
+.homeplaybutton:hover{
+    color: #ffffff;
+    background: #000000;
 }

@@ -40,19 +40,19 @@ for (let i = 0; i<300; i++){
 const moon = new THREE.Mesh(
   new THREE.SphereGeometry(20, 32, 16),
   new THREE.MeshBasicMaterial({
-    color: 0xC0C0C0
+    color: 0x8f00fc
   })
 )
 const mercury = new THREE.Mesh(
   new THREE.SphereGeometry(30, 32, 16),
   new THREE.MeshBasicMaterial({
-    color: 0xB3B3B3
+    color: 0x0058fc
   })
 )
 const venus = new THREE.Mesh(
   new THREE.SphereGeometry(7, 32, 16),
   new THREE.MeshBasicMaterial({
-    color: 0xE5D288
+    color: 0x157f68
   })
 )
 const mars = new THREE.Mesh(
@@ -65,7 +65,6 @@ const meteor = new THREE.Mesh(
   new THREE.DodecahedronGeometry(5, 32, 32),
   new THREE.MeshBasicMaterial({
     color: 0xFFA500,
-    wireframe: true
   })
 )
 const torus = new THREE.Mesh(
@@ -81,7 +80,7 @@ scene.add(moon, mercury, venus, mars, meteor, torus)
 moon.position.set(-60, 20, -50);
 mercury.position.set(-85, -20, -100);
 venus.position.set(45, -30, -50);
-mars.position.set(30, 0, -10);
+mars.position.set(40, 0, -10);
 meteor.position.set(45, 30, -50);
 torus.position.set(45, 30, -50);
 //set the background colour
@@ -90,7 +89,7 @@ scene.background = new THREE.Color( 0x000119 );
 //all moving/animations are in here as they need to be moved everytime function is called
 function animate(){
   requestAnimationFrame(animate);
-  //moon animation
+  
   
   
   //torus animation
@@ -102,6 +101,27 @@ function animate(){
 
 animate()
 
+//if the window gets resized, change the aspect ratio
+window.onresize = function(e){
+  camera.aspect = window.innerWidth/window.innerHeight;
+  camera.updateProjectionMatrix()
+  renderer.setSize(window.innerWidth, window.innerHeight)
+}
+
+//to move the mouse with the camera like a parallax effect
+//oldx and oldy are the old position of the camera (or current position before it gets changed?)
+let oldx = 0;
+let oldy = 0;
+//when the mouse moves, alter the camera position according to the mouse position to make a parallax effect
+window.onmousemove = function(ev){
+  let changex = ev.x - oldx;
+  let changey = ev.y - oldy;
+  camera.position.x += changex/100;
+  camera.position.y += changey/100;
+  //set the new 'old' position
+  oldx = ev.x;
+  oldy = ev.y;
+}
 //API--------------------------------------------------------------------------------------------------------------------
 var category = 'music';
 $.ajax({
