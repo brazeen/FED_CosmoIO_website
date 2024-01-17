@@ -108,9 +108,62 @@ body {
     background: #000000;
 }
 /*------------------------------------------------PLAY PAGE----------------------------------------------------------------*/
+/*dk why background img not linking send HELP */
+.play{
+    background-color: #000; /*I put bkground color first*/
+    background-image: url(/FED_CosmoIO_website/Assets/play-background-img.jpg);
+    background-repeat: repeat;
+}
+
+.playmain {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    min-width: 100vw;
+}
+
+/*this is the 3d space canvas so it always needs to be fixed position and under everything else*/
+#playbg {
+    z-index: -1;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.playalltextcontainer {
+    /*center every element of the home container*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /*column so the texts can be on top of one another, not beside*/
+    flex-direction: column;
+    /*make it roughly less than 50% of the width and height*/
+    min-height: 30vh;
+    min-width: 50vw;
+    /*add some margin around it*/
+    margin: 5% auto;
+}
+/*this is the heading that says cosmo.IO*/
+.playheading {
+    /*change the big words font to this*/
+    font-family: 'Orbitron', sans-serif;
+    /*change text colour to white*/
+    color: white;
+    /*when hovered over, put a nice glow over the text. this works by using 6 shadows with increasing blur each time, making it seem like neon*/
+    text-shadow: 0 0 10px #ffffff,
+                 0 0 20px #0f52e2,
+                 0 0 40px #ffffff,
+                 0 0 80px #0f52e2,
+                 0 0 120px #ffffff,
+                 0 0 160px #0f52e2;
+    /*change the font size of the heading*/
+    font-size: 5vw;
+}
 #navbarcolour{
     background-color: rgb(31, 31, 31);
 }
+
 /*-----CATEGORY SELECTION SECTION-------*/
 .play-category{
     width: 100%;
@@ -119,6 +172,7 @@ body {
     justify-content: center;
     column-gap: 30px;
     flex-wrap: wrap;
+    padding-top: 32%;
 }
 .play-category h2{
     color: white;
@@ -197,4 +251,16 @@ body {
 }
 .difficulty-category-box:nth-child(4){
     background-image: url(../Assets/Music.jpg);
+}
+.difficulty-category-box:hover .white-overlay{
+    opacity: 0;/*Brightens up the background image when hovered on*/
+}
+.difficulty-category-box h3{
+    color: #ffffff;
+    letter-spacing: 1px;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center; /*Aligns text to center of box*/
+    text-shadow: -2px 2px 4px #000; /*Creates a drop shadow to show the category text better*/
+    z-index: 100;/*Pushes text infront of the overlay to prevent getting overlapped*/
 }
