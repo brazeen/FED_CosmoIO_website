@@ -107,3 +107,67 @@ body {
     color: #ffffff;
     background: #000000;
 }
+/*------------------------------------------------PLAY PAGE----------------------------------------------------------------*/
+#navbarcolour{
+    background-color: rgb(31, 31, 31);
+}
+/*-----CATEGORY SELECTION SECTION-------*/
+#playheading{
+}
+.play-category{
+    width: 100%;
+    padding: 60px 0;/*60px top bottom padding, 0 left right padding*/
+    display: flex;
+    justify-content: center;
+    column-gap: 30px;
+    flex-wrap: wrap;
+}
+.play-category h2{
+    color: white;
+    text-align: center;
+    padding-bottom: -40px;
+    flex-basis: 100%;
+}
+.play-category-box{
+    width: 120px;
+    height: 120px;
+    background-color: gray; /*In case no image is shown, a background colour will still fill the box.*/
+    background-repeat: no-repeat;
+    background-size: cover; /*This helps to resize the images in the box to fit nicely*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;/*Remove underline undertext*/
+    position: relative;/*For white-overlay, if not, overlay will cover the whole page*/
+}
+.play-category-box:nth-child(2){/*Why not 1 is because the text "Select a category" is also considered a nth child and will receive the bg image if set to 1*/
+    background-image: url(../Assets/Mathematics.jpg);
+}
+.play-category-box:nth-child(3){
+    background-image: url(../Assets/General.jpg);
+}
+.play-category-box:nth-child(4){
+    background-image: url(../Assets/Music.jpg);
+}
+.white-overlay{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #070022;
+    opacity: 0.5;/*Gives a little vision of the background images*/
+    transition: all ease-in-out 200ms; /*Smoothen transition between opacity 0.5 to 0*/
+}
+.play-category-box:hover .white-overlay{
+    opacity: 0;/*Brightens up the background image when hovered on*/
+}
+.play-category-box h3{
+    color: #ffffff;
+    letter-spacing: 1px;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center; /*Aligns text to center of box*/
+    text-shadow: -2px 2px 4px #000; /*Creates a drop shadow to show the category text better*/
+    z-index: 100;/*Pushes text infront of the overlay to prevent getting overlapped*/
+}
