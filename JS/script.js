@@ -36,50 +36,57 @@ function addStar(){
 for (let i = 0; i<300; i++){
   addStar();
 }
+
+//textures
+const moonTexture = new THREE.TextureLoader().load('Assets/moon.jpg' );
+const marsTexture = new THREE.TextureLoader().load('Assets/mars.jpg' );
+const mercuryTexture = new THREE.TextureLoader().load('Assets/mercury.jpg' );
+const earthTexture = new THREE.TextureLoader().load('Assets/earth.jpg' );
+const saturnTexture = new THREE.TextureLoader().load('Assets/saturn.jpg' );
 //make planets + random objects
 const moon = new THREE.Mesh(
   new THREE.SphereGeometry(20, 32, 16),
   new THREE.MeshBasicMaterial({
-    color: 0x8f00fc
+    map: moonTexture
   })
 )
 const mercury = new THREE.Mesh(
   new THREE.SphereGeometry(30, 32, 16),
   new THREE.MeshBasicMaterial({
-    color: 0x0058fc
+    map: mercuryTexture
   })
 )
-const venus = new THREE.Mesh(
+const earth = new THREE.Mesh(
   new THREE.SphereGeometry(7, 32, 16),
   new THREE.MeshBasicMaterial({
-    color: 0x157f68
+    map: earthTexture
   })
 )
 const mars = new THREE.Mesh(
   new THREE.SphereGeometry(9, 32, 16),
   new THREE.MeshBasicMaterial({
-    color: 0xff6347
+    map: marsTexture
   })
 )
 const meteor = new THREE.Mesh(
-  new THREE.DodecahedronGeometry(5, 32, 32),
+  new THREE.SphereGeometry(7, 32, 16),
   new THREE.MeshBasicMaterial({
-    color: 0xFFA500,
+    map: saturnTexture
   })
 )
 const torus = new THREE.Mesh(
   new THREE.TorusGeometry(15, 3, 16, 100),
   new THREE.MeshBasicMaterial({
-    color: 0xfff000,
+    color: 0x9C2E35,
     wireframe: true
   })
 )
 //add all to the scene
-scene.add(moon, mercury, venus, mars, meteor, torus)
+scene.add(moon, mercury, earth, mars, meteor, torus)
 //change location of each
 moon.position.set(-60, 20, -50);
 mercury.position.set(-85, -20, -100);
-venus.position.set(45, -30, -50);
+earth.position.set(45, -30, -50);
 mars.position.set(40, 0, -10);
 meteor.position.set(45, 30, -50);
 torus.position.set(45, 30, -50);
@@ -122,6 +129,10 @@ window.onmousemove = function(ev){
   oldx = ev.x;
   oldy = ev.y;
 }
+//PLAY PAGE FOR GETTING INPUT--------------------------------------------------------------------------------------------------------------------
+
+//STORY PAGE FOR TEXTBOX--------------------------------------------------------------------------------------------------------------------
+
 //API--------------------------------------------------------------------------------------------------------------------
 var category = 'music';
 $.ajax({

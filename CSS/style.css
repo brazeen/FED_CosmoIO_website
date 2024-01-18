@@ -29,6 +29,7 @@ nav {
     justify-content: center;
     
 }
+
 /*------------------------------------------------BODY----------------------------------------------------------------*/
 body {
     display: flex;
@@ -114,6 +115,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
 }
 
 .playmain {
@@ -153,7 +155,8 @@ body {
     /*change the font size of the heading*/
     font-size: 75px;
 }
-#navbarcolour{
+/*change the navbar colour on this page since it is transparent in index.html*/
+#playnavbarcolour{
     background-color: #070022;
 }
 
@@ -255,4 +258,14 @@ body {
     text-align: center; /*Aligns text to center of box*/
     text-shadow: -2px 2px 4px #000; /*Creates a drop shadow to show the category text better*/
     z-index: 100;/*Pushes text infront of the overlay to prevent getting overlapped*/
+}
+
+/*------------------------------------------------STORY PAGE----------------------------------------------------------------*/
+/*change the navbar colour on this page since it is transparent in index.html*/
+#storynavbarcolour{
+    background-color: #070022;
+}
+
+.storymain {
+    
 }
