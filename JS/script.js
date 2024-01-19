@@ -97,12 +97,8 @@ scene.background = new THREE.Color( 0x000119 );
 //all moving/animations are in here as they need to be moved everytime function is called
 function animate(){
   requestAnimationFrame(animate);
-  
-  
-  
   //torus animation
   torus.rotation.x += 0.01;
-  
   torus.rotation.z += 0.01;
   renderer.render(scene,camera);
 }
@@ -131,4 +127,26 @@ window.onmousemove = function(ev){
   oldy = ev.y;
 }
 //PLAY PAGE FOR GETTING INPUT--------------------------------------------------------------------------------------------------------------------
+
+//GAME PAGE FOR GETTING INPUT--------------------------------------------------------------------------------------------------------------------
+//import a scene (kind of a container with all the cameras lights and everything)
+const gamescene = new THREE.Scene();
+//get a camera, specifically a perspective camera (designed to mimic human eyeball vision)
+//PerspectiveCamera takes in 4 arguments, (fov, aspectratio, camera frustrum near plane, camera frustrum far plane)
+//camera frustrum is effectively the view perspective of the camera
+const gamecamera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+//create a renderer in order to render out the objects to the scene
+const gamerenderer = new THREE.WebGLRenderer(
+  //select which element to render in
+  {canvas: document.querySelector('#gamebg'),}
+);
+//set ratio and make the size fullscreen
+gamerenderer.setPixelRatio(window.devicePixelRatio);
+gamerenderer.setSize(window.innerWidth, window.innerHeight);
+gamecamera.position.setZ(30);
+
+//add a light (ambient light because it lights up everything)
+const gameambientLight = new THREE.AmbientLight(0xffffff);
+scene.add(gameambientLight);
+
 

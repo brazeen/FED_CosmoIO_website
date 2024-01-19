@@ -35,6 +35,7 @@ body {
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
+    
 }
 
 /*------------------------------------------------MAIN HOME----------------------------------------------------------------*/
@@ -44,6 +45,7 @@ body {
     align-items: center;
     min-height: 100vh;
     min-width: 100vw;
+    
 }
 
 /*this is the 3d space canvas so it always needs to be fixed position and under everything else*/
