@@ -269,3 +269,12 @@ body {
    /*font family*/
    font-family: 'Orbitron', sans-serif;
 }
+
+/*------------------------------------------------GAME PAGE----------------------------------------------------------------*/
+/*this is the 3d game background so it always needs to be fixed position and under everything else*/
+#gamebg {
+    z-index: -1;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
