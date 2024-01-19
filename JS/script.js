@@ -126,5 +126,6 @@ window.onmousemove = function(ev){
   oldx = ev.x;
   oldy = ev.y;
 }
+
 //PLAY PAGE FOR GETTING INPUT--------------------------------------------------------------------------------------------------------------------
 
