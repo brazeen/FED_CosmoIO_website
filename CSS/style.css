@@ -35,7 +35,8 @@ body {
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
-    
+    /*default font family*/
+   font-family: 'Exo 2', sans-serif;
 }
 
 /*------------------------------------------------MAIN HOME----------------------------------------------------------------*/
@@ -261,8 +262,7 @@ body {
 .card {
    /*make the min height a little bigger because it is too short if it is just the height of the text*/
    min-height: 15vw;
-   /*font family*/
-   font-family: 'Exo 2', sans-serif;
+   
 }
 
 .card-header {
