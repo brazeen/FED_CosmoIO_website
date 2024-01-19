@@ -278,3 +278,7 @@ body {
     top: 0;
     left: 0;
 }
+
+.gamemain {
+    min-height: 100vh;
+}
