@@ -126,6 +126,7 @@ window.onmousemove = function(ev){
   oldx = ev.x;
   oldy = ev.y;
 }
+
 //PLAY PAGE FOR GETTING INPUT--------------------------------------------------------------------------------------------------------------------
 function radioValue(){
   //set array to store radio input value
