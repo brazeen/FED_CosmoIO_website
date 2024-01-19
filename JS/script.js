@@ -1,4 +1,5 @@
 //FOR THREE.JS LIBRARY--------------------------------------------------------------------------------------------------------------------
+//HOME PAGE--------------------------------------------------------------------------------------------------------------------
 //import a scene (kind of a container with all the cameras lights and everything)
 const scene = new THREE.Scene();
 //get a camera, specifically a perspective camera (designed to mimic human eyeball vision)
@@ -130,6 +131,4 @@ window.onmousemove = function(ev){
   oldy = ev.y;
 }
 //PLAY PAGE FOR GETTING INPUT--------------------------------------------------------------------------------------------------------------------
-
-//STORY PAGE FOR TEXTBOX--------------------------------------------------------------------------------------------------------------------
 
