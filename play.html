@@ -54,44 +54,70 @@
     </nav>
     <main class="play">
         <div class="playallcontainer">
-            <h1 class="playheading">Category Selection</h1>  
-            <div class="play-category">
-                <h2>What do you want to be quizzed on?</h2>  
-                <!-- Category Section -->
-                <h2> Select a category </h2>
-                <a href="#" class="play-category-box">
-                    <div class="white-overlay"></div>
-                    <h3> Mathematics </h3>
-                </a>
-                <a href="#" class="play-category-box">
-                    <div class="white-overlay"></div>
-                    <h3> General </h3>
-                </a>
-                <a href="#" class="play-category-box">
-                    <div class="white-overlay"></div>
-                    <h3> Music </h3>
-                </a>
-                <!-- Difficulty selection -->
-                <h2> Select difficulty </h2>
-                <a href="#" class="play-difficulty-box">
-                    <div class="white-overlay"></div>
-                    <h3> Easy </h3>
-                </a>
-                <a href="#" class="play-difficulty-box">
-                    <div class="white-overlay"></div>
-                    <h3> Medium </h3>
-                </a>
-                <a href="#" class="play-difficulty-box">
-                    <div class="white-overlay"></div>
-                    <h3> Hard </h3>
-                </a>
+            <h1 class="playheading">Category Selection</h1>
+            <h2>What do you want to be quizzed on?</h2>
+            <div class="selectcontainer">
+                <div class="radio-tile-group">
+          
+                  <div class="input-container">
+                    <input id="Mathematics" type="radio" name="radio">
+                    <div class="radio-tile">
+                      <ion-icon name="calculator-outline"></ion-icon>
+                      <label for="Mathematics">Mathematics</label>
+                    </div>
+                  </div>
+          
+                  <div class="input-container">
+                    <input id="man" type="radio" name="radio">
+                    <div class="radio-tile">
+                        <ion-icon name="accessibility-outline"></ion-icon>
+                      <label for="man">General</label>
+                    </div>
+                  </div>
+          
+                  <div class="input-container">
+                    <input id="music" type="radio" name="radio">
+                    <div class="radio-tile">
+                        <ion-icon name="musical-notes-outline"></ion-icon>
+                      <label for="music">Music</label>
+                    </div>
+                  </div>
+                </div>
+            </div> 
+            <h2>Select Difficulty</h2>
+            <div class="selectcontainer">
+                <div class="radio-tile-group">
+          
+                  <div class="input-container">
+                    <input id="easy" type="radio" name="radio1">
+                    <div class="radio-tile">
+                      <ion-icon name="calculator-outline"></ion-icon>
+                      <label for="easy">Easy</label>
+                    </div>
+                  </div>
+          
+                  <div class="input-container">
+                    <input id="normal" type="radio" name="radio1">
+                    <div class="radio-tile">
+                        <ion-icon name="accessibility-outline"></ion-icon>
+                      <label for="normal">Normal</label>
+                    </div>
+                  </div>
+          
+                  <div class="input-container">
+                    <input id="hard" type="radio" name="radio1">
+                    <div class="radio-tile">
+                        <ion-icon name="musical-notes-outline"></ion-icon>
+                      <label for="hard">Hard</label>
+                    </div>
+                  </div>
+                </div>
             </div>
-                
-            
         </div>
         
         
-        
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     </main>
     <footer class="bg-body-tertiary text-white text-center" style="background-color: #070022;">
         <!-- Grid container -->

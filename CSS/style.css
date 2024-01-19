@@ -139,6 +139,10 @@ body {
     /*add some margin around it*/
     margin: 5% auto;
 }
+.playallcontainer h2{
+    color: #07afd9;
+    padding-top: 10%;
+}
 /*this is the heading that says cosmo.IO*/
 .playheading {
     /*change the big words font to this*/
@@ -161,104 +165,76 @@ body {
 }
 
 /*-----CATEGORY SELECTION SECTION-------*/
-.play-category{
-    width: 100%;
-    padding: 60px 0;/*60px top bottom padding, 0 left right padding*/
+.selectcontainer {
     display: flex;
     justify-content: center;
-    column-gap: 30px;
+    align-items: center;    /* Aligns elements to center of page */
+    height: 50vh;
+    overflow: hidden;
+    --primary-color: #07afd9;
+  }
+  
+  .radio-tile-group { /* for each radio tile */
+    display: flex;
     flex-wrap: wrap;
-}
-.play-category h2{
-    color: white;
-    font-family: 'Exo 2', sans-serif; /*change font*/
-    text-align: center;
-    padding-bottom: 40px;
-    flex-basis: 100%;
-    padding-top: 50px;
-}
-.play-category-box{
-    width: 120px;
-    height: 120px;
-    border-radius: 25%; /*rounded edges*/
-    background-color: gray; /*In case no image is shown, a background colour will still fill the box.*/
-    background-repeat: no-repeat;
-    background-size: cover; /*This helps to resize the images in the box to fit nicely*/
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;/*Remove underline undertext*/
-    position: relative;/*For white-overlay, if not, overlay will cover the whole page*/
-}
-.play-category-box:nth-child(3){/*Why not 1 is because the text "Select a category" is also considered a nth child and will receive the bg image if set to 1*/
-    background-image: url('../Assets/Mathematics.jpg');
-}
-.play-category-box:nth-child(4){
-    background-image: url('../Assets/General.jpg');
-}
-.play-category-box:nth-child(5){
-    background-image: url('../Assets/Music.jpg');
-}
-.white-overlay{
+    justify-content: center; /* responsiveness base on screen size */
+  }
+  
+  .input-container {
+    position: relative;
+    height: 7rem;
+    width: 7rem; /*creates square shape of tiles */
+    margin: 0.5rem; /* spacing between each tile */
+  }
+  
+  .input-container input {
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    border-radius: 25%; /*so the overlay doesnt stick out above the rounded edges of the pictures*/
-    background-color: #070022;
-    opacity: 0.5;/*Gives a little vision of the background images*/
-    transition: all ease-in-out 200ms; /*Smoothen transition between opacity 0.5 to 0*/
-}
-.play-category-box:hover .white-overlay{
-    opacity: 0;/*Brightens up the background image when hovered on*/
-}
-.play-category-box h3{
-    color: #ffffff;
-    font-family: 'Exo 2', sans-serif; /*change font*/
-    letter-spacing: 1px;
-    font-size: 16px;
-    line-height: 24px;
-    text-align: center; /*Aligns text to center of box*/
-    text-shadow: -2px 2px 4px #000; /*Creates a drop shadow to show the category text better*/
-    z-index: 100;/*Pushes text infront of the overlay to prevent getting overlapped*/
-}
-
-.play-difficulty-box {
-    width: 120px;
-    height: 120px;
-    border-radius: 25%; /*rounded edges*/
-    background-color: gray; /*In case no image is shown, a background colour will still fill the box.*/
-    background-repeat: no-repeat;
-    background-size: cover; /*This helps to resize the images in the box to fit nicely*/
+    height: 100%; 
+    width: 100%; /* so that user is able to click on any part of the tile to select, if not only can click on text in tile to select. */
+    margin: 0;
+    cursor: pointer; /* give pointer effect when hover over */
+    z-index: 2;
+    opacity: 0;
+  }
+  
+  .input-container .radio-tile {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    text-decoration: none;/*Remove underline undertext*/
-    position: relative;/*For white-overlay, if not, overlay will cover the whole page*/
-}
-.play-difficulty-box:nth-child(7){/*Why not 1 is because the text "Select a category" is also considered a nth child and will receive the bg image if set to 1*/
-    background-image : url('../Assets/hard.jpg');
-}
-.play-difficulty-box:nth-child(8){
-    background-image: url('../Assets/hard.jpg');
-}
-.play-difficulty-box:nth-child(9){
-    background-image: url('../Assets/hard.jpg');
-}
-.play-difficulty-box:hover .white-overlay{
-    opacity: 0;/*Brightens up the background image when hovered on*/
-}
-.play-difficulty-box h3{
-    font-family: 'Exo 2', sans-serif; /*change font*/
-    color: #ffffff;
+    justify-content: center;
+    height: 100%;
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    transition: all 300ms ease;
+  }
+  
+  .input-container ion-icon {
+    color: var(--primary-color);
+    font-size: 3rem;
+  }
+  
+  .input-container label {
+    color: var(--primary-color);
+    font-size: 0.80rem;
+    font-weight: 600;
+    text-transform: uppercase;
     letter-spacing: 1px;
-    font-size: 16px;
-    line-height: 24px;
-    text-align: center; /*Aligns text to center of box*/
-    text-shadow: -2px 2px 4px #000; /*Creates a drop shadow to show the category text better*/
-    z-index: 100;/*Pushes text infront of the overlay to prevent getting overlapped*/
-}
+  }
+  
+  input:checked+.radio-tile {
+    background-color: var(--primary-color);
+    box-shadow: 0 0 12px var(--primary-color);
+    transform: scale(1.1);
+  }
+  
+  input:hover+.radio-tile {
+    box-shadow: 0 0 12px var(--primary-color);
+  }
+  
+  input:checked+.radio-tile ion-icon,
+  input:checked+.radio-tile label {
+    color: white;
+  }
 
 /*------------------------------------------------STORY PAGE----------------------------------------------------------------*/
 /*change the navbar colour on this page since it is transparent in index.html*/
