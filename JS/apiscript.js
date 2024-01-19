@@ -8,17 +8,18 @@ $.ajax({
     contentType: 'application/json',
     success: function(result) {
         console.log(result);
-      
-        
+        var question = result.questions
+        for (var i = 0; i < result.length; i++) {
+          console.log("Category: " + result[i].category);
+          console.log("Question: " + result[i].question);
+          console.log("Answer: " + result[i].answer);
+        }
     },
     error: function ajaxError(jqXHR) {
         console.error('Error: ', jqXHR.responseText);
     }
 });
 //print out category, question and answer by using a for loop
-for (var i = 0; i < questions.length; i++) {
-  console.log("Category: " + questions[i].category);
-  console.log("Question: " + questions[i].question);
-  console.log("Answer: " + questions[i].answer);
-}
+
+
 
