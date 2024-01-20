@@ -294,6 +294,7 @@ body {
 /*padding to space out elements*/
 .gamefuelheader {
     padding: 15px;
+    /*more visible text colour*/
     color: #ffffff;
     
 }
