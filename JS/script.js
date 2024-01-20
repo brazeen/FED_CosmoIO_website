@@ -43,7 +43,7 @@ for (let i = 0; i<300; i++){
 //textures
 const moonTexture = new THREE.TextureLoader().load('Assets/moon.jpg' );
 const marsTexture = new THREE.TextureLoader().load('Assets/mars.jpg' );
-const mercuryTexture = new THREE.TextureLoader().load('Assets/mercury.jpg' );
+const jupiterTexture = new THREE.TextureLoader().load('Assets/jupiter.jpg' );
 const earthTexture = new THREE.TextureLoader().load('Assets/earth.jpg' );
 const saturnTexture = new THREE.TextureLoader().load('Assets/saturn.jpg' );
 //make planets + random objects
@@ -53,10 +53,10 @@ const moon = new THREE.Mesh(
     map: moonTexture
   })
 )
-const mercury = new THREE.Mesh(
+const jupiter = new THREE.Mesh(
   new THREE.SphereGeometry(30, 32, 16),
   new THREE.MeshBasicMaterial({
-    map: mercuryTexture
+    map: jupiterTexture
   })
 )
 const earth = new THREE.Mesh(
@@ -78,17 +78,16 @@ const meteor = new THREE.Mesh(
   })
 )
 const torus = new THREE.Mesh(
-  new THREE.TorusGeometry(15, 3, 16, 100),
-  new THREE.MeshBasicMaterial({
-    color: 0x9C2E35,
-    wireframe: true
+  new THREE.TorusGeometry(15, 1, 16, 100),
+  new THREE.MeshStandardMaterial({
+    color: 0xf4edbc
   })
 )
 //add all to the scene
-scene.add(moon, mercury, earth, mars, meteor, torus)
+scene.add(moon, jupiter, earth, mars, meteor, torus)
 //change location of each
 moon.position.set(-60, 20, -50);
-mercury.position.set(-85, -20, -100);
+jupiter.position.set(-85, -20, -100);
 earth.position.set(45, -30, -50);
 mars.position.set(40, 0, -10);
 meteor.position.set(45, 30, -50);
@@ -101,7 +100,6 @@ function animate(){
   requestAnimationFrame(animate);
   //torus animation
   torus.rotation.x += 0.01;
-  torus.rotation.z += 0.01;
   renderer.render(scene,camera);
 }
 
