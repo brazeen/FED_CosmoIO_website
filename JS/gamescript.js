@@ -1,27 +1,19 @@
 //GAME PAGE FOR GETTING INPUT--------------------------------------------------------------------------------------------------------------------
+//Import the THREE.js library
+import * as THREE from "https://cdn.skypack.dev/three@0.129.0/build/three.module.js";
 //import GLTF loader (to load the spaceship 3d model)
 import { GLTFLoader } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/GLTFLoader.js";
 //loader for the gltf file
 
-const gltfloader = new GLTFLoader();
+let loader = new GLTFLoader();
 
-//load the file
-gltfloader.load(
-  '../Assets/scene.gltf',
-  function (gltf) {
-    //if the file is loaded, add it to the scene
-    object = gltf.scene;
-    scene.add(object);
-  },
-  function (xhr) {
-    //While it is loading, log the progress
-    console.log((xhr.loaded / xhr.total * 100) + '% loaded');
-  },
-  function (error) {
-    //If there is an error, log it
-    console.error(error);
-  }
-);
+//variable to store spaceship
+var spaceship;
+loader.load('Assets/scene.gltf', function(gltf){
+  spaceship = gltf.scene.children[0];
+  scene.add(gltf.scene);
+  animate();
+});
 
 //threejs 
 //import a scene 

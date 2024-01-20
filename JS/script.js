@@ -1,4 +1,6 @@
 //FOR THREE.JS LIBRARY--------------------------------------------------------------------------------------------------------------------
+//Import the THREE.js library
+import * as THREE from "https://cdn.skypack.dev/three@0.129.0/build/three.module.js";
 //HOME PAGE--------------------------------------------------------------------------------------------------------------------
 //import a scene (kind of a container with all the cameras lights and everything)
 const scene = new THREE.Scene();
