@@ -10,6 +10,17 @@ function radioValue(){
     uInput.push(difCheck);
     console.log(uInput);
   }
+  //make proceed button appear after difficulty selection
+  function toggleb(){
+    let b = document.getElementById("b")
+    if (b.style.display === "block"){
+      b.style.display = "none"
+    }
+    else{
+      b.style.display = "block"
+    }
+
+  }
 //API--------------------------------------------------------------------------------------------------------------------
 var category = 'mathematics';
 //retrieve data by AJAX from api-ninja
