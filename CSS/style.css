@@ -278,7 +278,22 @@ body {
     top: 0;
     left: 0;
 }
-
+/*main content never less than 100vh*/
 .gamemain {
     min-height: 100vh;
+    /*column direction, centered on z axis and at the top of the page with flex-start (fuel meter supposed to be at the top of the page*/
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+
+.gameprogresscontainer {
+    width: 65%;
+}
+/*padding to space out elements*/
+.gamefuelheader {
+    padding: 15px;
+    color: #ffffff;
+    
 }

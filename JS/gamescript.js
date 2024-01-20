@@ -9,10 +9,11 @@ let loader = new GLTFLoader();
 
 //variable to store spaceship
 var spaceship;
+//load the spaceship model
 loader.load('Assets/scene.gltf', function(gltf){
-  spaceship = gltf.scene.children[0];
-  scene.add(gltf.scene);
-  animate();
+  spaceship = gltf.scene;
+  //add spaceship to the scene
+  scene.add(spaceship);
 });
 
 //threejs 
@@ -30,7 +31,7 @@ const renderer = new THREE.WebGLRenderer(
 //set ratio and make the size fullscreen
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
-camera.position.setZ(30);
+
 
 //add a light (ambient light because it lights up everything)
 const ambientLight = new THREE.AmbientLight(0xffffff);
@@ -59,7 +60,7 @@ const earthTexture = new THREE.TextureLoader().load('Assets/earth.jpg' );
 //make earth
 
 const earth = new THREE.Mesh(
-  new THREE.SphereGeometry(7, 32, 16),
+  new THREE.SphereGeometry(25, 32, 16),
   new THREE.MeshBasicMaterial({
     map: earthTexture
   })
@@ -67,8 +68,9 @@ const earth = new THREE.Mesh(
 
 //add earth to the scene
 scene.add(earth)
-//change location of earth
-earth.position.set(45, -30, -50);
+//change location of models and camera
+camera.position.set(0,40,60);
+earth.position.set(0,50,-50);
 //set the background colour
 scene.background = new THREE.Color( 0x000119 );
 //make a recursive function to animate the screen
@@ -76,7 +78,11 @@ scene.background = new THREE.Color( 0x000119 );
 function animate(){
   requestAnimationFrame(animate);
   //animation
-  
+  //if spaceship is loaded, rotate it
+  if (spaceship){
+    spaceship.rotation.y += 0.01;
+  }
+  earth.rotation.z += 0.0015;
   renderer.render(scene,camera);
 }
 
