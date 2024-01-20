@@ -126,16 +126,3 @@ window.onmousemove = function(ev){
   oldx = ev.x;
   oldy = ev.y;
 }
-
-//PLAY PAGE FOR GETTING INPUT--------------------------------------------------------------------------------------------------------------------
-function radioValue(){
-  //set array to store radio input value
-  var uInput = []
-  //check when the radio is checked and store in a var
-  var catCheck = document.querySelector('[name=radio]:checked')
-  var difCheck = document.querySelector('[name=radio1]:checked')
-  //push in the var to store the radio values
-  uInput.push(catCheck);
-  uInput.push(difCheck);
-  console.log(uInput);
-}
