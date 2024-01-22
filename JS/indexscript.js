@@ -86,8 +86,8 @@ const torus = new THREE.Mesh(
 //add all to the scene
 scene.add(moon, jupiter, earth, mars, meteor, torus)
 //change location of each
-moon.position.set(-60, 20, -50);
-jupiter.position.set(-85, -20, -100);
+moon.position.set(-60, 20, -48);
+jupiter.position.set(-85, -35, -100);
 earth.position.set(45, -30, -50);
 mars.position.set(40, 0, -10);
 meteor.position.set(45, 30, -50);
@@ -100,6 +100,11 @@ function animate(){
   requestAnimationFrame(animate);
   //torus animation
   torus.rotation.x += 0.01;
+  moon.rotation.y += 0.001;
+  jupiter.rotation.y -= 0.001;
+  earth.rotation.x += 0.002;
+  earth.rotation.y += 0.001;
+  mars.rotation.y += 0.001;
   renderer.render(scene,camera);
 }
 
