@@ -1,7 +1,8 @@
 //PLAY PAGE FOR GETTING INPUT--------------------------------------------------------------------------------------------------------------------
+var uInput;
 function radioValue(){
     //set array to store radio input value
-    var uInput = []
+    uInput = []
     //check when the radio is checked and store in a var
     var catCheck = document.querySelector('[name=radio]:checked')
     var difCheck = document.querySelector('[name=radio1]:checked')
@@ -48,27 +49,120 @@ function radioValue(){
     })
   }
 //API--------------------------------------------------------------------------------------------------------------------
-var category = 'mathematics';
-//retrieve data by AJAX from api-ninja
-$.ajax({
-    method: 'GET',
-    url: 'https://api.api-ninjas.com/v1/trivia?category=' + category,
-    headers: { 'X-Api-Key': 'nz8vVKrPrL7wvqs9iPp1EQ==tvjazCHgm8egFldd'},
-    contentType: 'application/json',
-    success: function(result) {
-        console.log(result);
-        var question = result.questions
-        for (var i = 0; i < result.length; i++) {
-          console.log("Category: " + result[i].category);
-          console.log("Question: " + result[i].question);
-          console.log("Answer: " + result[i].answer);
-        }
-    },
-    error: function ajaxError(jqXHR) {
-        console.error('Error: ', jqXHR.responseText);
-    }
+//**HAVEN DECIDE WHETHER TO INCLUDE A PLAY AGAIN BUTTON OR LET PLAYER GO OUT OF THE GAME THAN COME BACK IN TO PLAY AGAIN**
+//get the Id 'questions' from game.html
+const _question = document.getElementById('questions');
+//get the class 'quiz-option' from game.html
+const _options = document.querySelector('.quiz-options');
+//get the id 'correct-score' from game.html
+let _correctScore = document.getElementById('correct-score');
+//get the id 'total-questions' from game.html
+let _totalQuestion = document.getElementById('total-questions');
+const _checkBtn = document.getElementById('check-answer');
+const _result = document.getElementById('result')
+
+let correctAnswer = " ", correctScore = askedCount = 0, totalQuestion = 10;
+
+//eventlistener to check player's answer when they click on the button check answer
+function eventlistener(){
+  _checkBtn.addEventListener('click',checkAnswer);
+  
+}
+
+document.addEventListener('DOMContentLoaded',() =>{
+  loadQuestion();
+  eventlistener();
+  _totalQuestion.textContent = totalQuestion;
+  _correctScore.textContent = correctScore;
 });
-//print out category, question and answer by using a for loop
+async function loadQuestion(){
+  /*API link*/
+  const APIUrl = 'https://opentdb.com/api.php?amount=10&category=9&difficulty=medium&type=multiple';
+  /*fetch API*/
+  const result = await fetch(`${APIUrl}`);
+  const data = await result.json();
+  // console.log(data.results[0]);
+  _result.innerHTML = " ";
+  showQuestion(data.results[0]);
+}
 
+function showQuestion(data){
+  _checkBtn.disabled = false
+  //assign correct answer to correctAnswer variable
+  correctAnswer = data.correct_answer;
+  let incorrectAnswer = data.incorrect_answers;
+  let optionsList = incorrectAnswer;
+  // inserting random answers in random order to the option list
+  optionsList.splice(Math.floor(Math.random() * (incorrectAnswer.length * 1)), 0, correctAnswer);
+  //code to display which category the quiz is in and also display the question
+  _question.innerHTML = `${data.question} <br> <span class = "category">${data.category} </span>`;
+  _options.innerHTML = `${optionsList.map((option, index) =>
+    `<li>${index + 1}. <span>${option}</span></li>`).join('')}`;
 
+    selectOption();
+}
+//function to display which option the player chose
+function selectOption(){
+  //loop through each option by selecting 'li'
+  _options.querySelectorAll('li').forEach((option) =>{
+    //eventlistener to check if user click on any option
+    option.addEventListener('click', () => {
+      //if statement so that if user click on one option, the class 'selected will be triggered
+      if(_options.querySelector('.selected')){
+        const activeOption = _options.querySelector('.selected');
+        //if user has chose an option previously, the new option will replace the old option and ther new option will brighten while old option will return back to normal state
+        activeOption.classList.remove('selected');
+      }
+      
+      option.classList.add('selected');
+    });
+  });
+  //can use console to check fo correct answer
+  console.log(correctAnswer);
+}
+
+//check answer function
+function checkAnswer(){
+  _checkBtn.disabled = true;
+  //code to store the option the player chose
+  if(_options.querySelector('.selected')){
+    let selectedAnswer = _options.querySelector('.selected span').
+    textContent;
+    //if statement to increment correct score whenever player enters correct answer and also print 'Correct Answer!'
+    if (selectedAnswer.trim() == HTMLDecode(correctAnswer)){
+      correctScore++;
+      _result.innerHTML = `<p> <i class = "fas fa-check"></i>Correct Answer!</p>`;
+    }
+    //else statement to print wrong answer and print the correct answer instead
+    else {
+      _result.innerHTML = `<p> <i class = "fas fa-times"></i>Incorrect Answer<p><small><b>Correct Answer:</b> ${correctAnswer}</small></p>`;
+    }
+    checkCount();
+    //else statement to remind the player to select an option before pressing on cehck answer button
+  }else{
+    _result.innerHTML = `<p><i class = "fas fa-question"></i>Please select an option!</p>`;
+    _checkBtn.disabled = false;
+  }
+}
+//Convert html entities to normal text of correct answer if there is
+function HTMLDecode(textString){
+  let doc = new DOMParser().parseFromString(textString, "text/html");
+  return doc.documentElement.textContent;
+}
+function checkCount(){
+  askedCount++;
+  setCount();
+  if(askedCount == totalQuestion){
+    _result.innerHTML = `<p> Your score is ${correctScore}.</p>`;
+  }else{
+    setTimeout(() => {
+      loadQuestion()
+      //set timeout to 4000 because API has limit of amount of request per unit time
+    }, 4000); 
+  }
+}
+function setCount(){
+  totalQuestion.textContent = totalQuestion;
+  _correctScore.textContent = correctScore;
+}
 
