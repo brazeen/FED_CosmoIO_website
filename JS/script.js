@@ -12,14 +12,40 @@ function radioValue(){
   }
   //make proceed button appear after difficulty selection
   function toggleb(){
-    let b = document.getElementById("b")
-    if (b.style.display === "block"){
-      b.style.display = "none"
+    let b = document.getElementById("b");
+    if (uInput[1] == null){
+      b.ariaDisabled = true
     }
-    else{
-      b.style.display = "block"
+    else {
+      b.ariaDisabled = false
     }
 
+    e.addEventListener("click", (a) => {
+      const value = a.currentTarget.value;
+      b.ariaDisabled = false
+
+      if (value === ""){
+        b.ariaDisabled = true;
+      }
+    })
+
+    n.addEventListener("click", (a) => {
+      const value = a.currentTarget.value;
+      b.ariaDisabled = false
+
+      if (value === ""){
+        b.ariaDisabled = true;
+      }
+    })
+
+    h.addEventListener("click", (a) => {
+      const value = a.currentTarget.value;
+      b.ariaDisabled = false
+
+      if (value === ""){
+        b.ariaDisabled = true;
+      }
+    })
   }
 //API--------------------------------------------------------------------------------------------------------------------
 var category = 'mathematics';
