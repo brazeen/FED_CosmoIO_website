@@ -65,39 +65,40 @@
         </div>
         <div class="gameprogresscontainer">
             <div class="progress">
-                <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                <div id="fuelamt" class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
         </div>
         <!--this is where all the game 3d stuff happens-->
         <canvas id="gamebg"></canvas>
-    </main>
-    <div class="game-wrap">
-        <div class="questions-container">
-            <div class="questions-head">
-                <h1 class="questions-title">Quiz</h1>
-                <div class="quiz-score">
-                    <span id="correct-score">0</span>/<span id="total-questions">10</span>
+    
+        <div class="game-wrap">
+            <div class="questions-container">
+                <div class="questions-head">
+                    <h1 class="questions-title">Quiz</h1>
+                    <div class="quiz-score">
+                        <span id="correct-score">0</span>/<span id="total-questions">10</span>
+                    </div>
                 </div>
-            </div>
-            <div class="quiz-body">
-                <h2 class="quiz-questions" id="questions">What is the square root of 1?<br><span class="category">Mathematics</span></h2>
-                <ul class="quiz-options">
-                    <li>1.</li>
-                    <li>2.</li>
-                    <li>3.</li>
-                    <li>4.</li>
-                </ul>
-                <div id="result">
-                    <!--result here-->
+                <div class="quiz-body">
+                    <h2 class="quiz-questions" id="questions">What is the square root of 1?<br><span class="category">Mathematics</span></h2>
+                    <ul class="quiz-options">
+                        <li>1.</li>
+                        <li>2.</li>
+                        <li>3.</li>
+                        <li>4.</li>
+                    </ul>
+                    <div id="result">
+                        <!--result here-->
+                    </div>
                 </div>
+                <div class="quiz-foot">
+                    <button type="game-button" id="check-answer">Check answer!</button>
+                    <button type="button" id="play-again">Play Again!</button>
+                </div>
+                
             </div>
-            <div class="quiz-foot">
-                <button type="game-button" id="check-answer">Check answer!</button>
-                <button type="button" id="play-again">Play Again!</button>
-            </div>
-            
         </div>
-    </div>
+    </main>
 
     <footer class="bg-body-tertiary text-white text-center" style="background-color: #070022;">
         <!-- Grid container -->
