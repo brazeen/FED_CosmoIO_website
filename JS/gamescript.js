@@ -12,6 +12,7 @@ var spaceship;
 //load the spaceship model
 loader.load('Assets/scene.gltf', function(gltf){
   spaceship = gltf.scene;
+  spaceship.scale.set(1.5,1.5,1.5);
   //add spaceship to the scene
   scene.add(spaceship);
 });
@@ -80,7 +81,7 @@ function animate(){
   //animation
   //if spaceship is loaded, rotate it
   if (spaceship){
-    spaceship.rotation.y += 0.01;
+    spaceship.rotation.y += 0.005;
   }
   earth.rotation.z += 0.0015;
   renderer.render(scene,camera);
