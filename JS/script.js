@@ -1,5 +1,6 @@
 //PLAY PAGE FOR GETTING INPUT--------------------------------------------------------------------------------------------------------------------
 var uInput;
+
 function radioValue(){
     //set array to store radio input value
     uInput = []
@@ -11,43 +12,79 @@ function radioValue(){
     uInput.push(difCheck);
     console.log(uInput);
   }
-  //make proceed button appear after difficulty selection
-  function toggleb(){
-    let b = document.getElementById("b");
-    if (uInput[1] == null){
-      b.ariaDisabled = true
-    }
-    else {
-      b.ariaDisabled = false
-    }
 
-    e.addEventListener("click", (a) => {
-      const value = a.currentTarget.value;
-      b.ariaDisabled = false
 
-      if (value === ""){
-        b.ariaDisabled = true;
-      }
-    })
-
-    n.addEventListener("click", (a) => {
-      const value = a.currentTarget.value;
-      b.ariaDisabled = false
-
-      if (value === ""){
-        b.ariaDisabled = true;
-      }
-    })
-
-    h.addEventListener("click", (a) => {
-      const value = a.currentTarget.value;
-      b.ariaDisabled = false
-
-      if (value === ""){
-        b.ariaDisabled = true;
-      }
-    })
+//set the minus amount from fuel bar 
+var minusamt;
+// Function to handle button click
+function setminusamount(difficulty) {
+  // Update the difficultyLevel variable based on the button pressed
+  switch (difficulty) {
+      case 'easy':
+          minusamt = 10;
+          break;
+      case 'normal':
+          minusamt = 25;
+          break;
+      case 'hard':
+          minusamt = 50;
+          break;
   }
+  // Log the selected difficulty to the console
+  console.log(`Selected difficulty: ${difficulty}, Minus amount: ${minusamt}`);
+}
+//event listeners
+//only run if the page is 'play' page so check if easy is null
+if (document.getElementById('easy') != null){
+  document.getElementById('easy').addEventListener('click', function() {
+    setminusamount('easy');
+  });
+  document.getElementById('normal').addEventListener('click', function() {
+    setminusamount('normal');
+  });
+  document.getElementById('hard').addEventListener('click', function() {
+    setminusamount('hard');
+  });
+}
+
+
+//make proceed button appear after difficulty selection
+function toggleb(){
+  let b = document.getElementById("b");
+  if (uInput[1] == null){
+    b.ariaDisabled = true
+  }
+  else {
+    b.ariaDisabled = false
+  }
+
+  e.addEventListener("click", (a) => {
+    const value = a.currentTarget.value;
+    b.ariaDisabled = false
+
+    if (value === ""){
+      b.ariaDisabled = true;
+    }
+  })
+
+  n.addEventListener("click", (a) => {
+    const value = a.currentTarget.value;
+    b.ariaDisabled = false
+
+    if (value === ""){
+      b.ariaDisabled = true;
+    }
+  })
+
+  h.addEventListener("click", (a) => {
+    const value = a.currentTarget.value;
+    b.ariaDisabled = false
+
+    if (value === ""){
+      b.ariaDisabled = true;
+    }
+  })
+}
 //API--------------------------------------------------------------------------------------------------------------------
 //**HAVEN DECIDE WHETHER TO INCLUDE A PLAY AGAIN BUTTON OR LET PLAYER GO OUT OF THE GAME THAN COME BACK IN TO PLAY AGAIN**
 //get the Id 'questions' from game.html
@@ -154,6 +191,7 @@ function checkCount(){
   setCount();
   if(askedCount == totalQuestion){
     _result.innerHTML = `<p> Your score is ${correctScore}.</p>`;
+    _checkBtn.innerHTML = `<button class="btn btn-outline-light btn-lg p-3" onclick="window.location.href='index.html';">Exit</button>`;
   }else{
     setTimeout(() => {
       loadQuestion()
