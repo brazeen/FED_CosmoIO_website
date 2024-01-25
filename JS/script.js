@@ -24,13 +24,14 @@ function setminusamount(difficulty) {
           minusamt = 10;
           break;
       case 'normal':
-          minusamt = 25;
+          minusamt = 20;
           break;
       case 'hard':
           minusamt = 50;
           break;
   }
   // Log the selected difficulty to the console
+  sessionStorage.setItem('minusamt', minusamt);
   console.log(`Selected difficulty: ${difficulty}, Minus amount: ${minusamt}`);
 }
 //event listeners
@@ -46,6 +47,7 @@ if (document.getElementById('easy') != null){
     setminusamount('hard');
   });
 }
+//store this minus amount in the session storage
 
 
 //make proceed button appear after difficulty selection
@@ -97,6 +99,20 @@ let _correctScore = document.getElementById('correct-score');
 let _totalQuestion = document.getElementById('total-questions');
 const _checkBtn = document.getElementById('check-answer');
 const _result = document.getElementById('result')
+//fuelbar element and fuel percentage
+const _fuelBar = document.getElementById('fuelamt')
+let fuelpercent = 100
+//this would be placed in the other part if the damn API worked
+fuelpercent = _fuelBar.style.width
+//get numeric value without '%'
+let numericValue = parseInt(fuelpercent, 10);
+//subtract the minus amount (determined earlier) from the numeric value
+//get the minus amount from session storage
+minusamt = sessionStorage.getItem('minusamt');
+let updatedValue = numericValue - minusamt;
+console.log(minusamt)
+//set the updated width back to the _fuelBar element
+_fuelBar.style.width = updatedValue + '%';
 
 let correctAnswer = " ", correctScore = askedCount = 0, totalQuestion = 10;
 
@@ -172,7 +188,8 @@ function checkAnswer(){
     }
     //else statement to print wrong answer and print the correct answer instead
     else {
-      _result.innerHTML = `<p> <i class = "fas fa-times"></i>Incorrect Answer<p><small><b>Correct Answer:</b> ${correctAnswer}</small></p>`;
+      _result.innerHTML = `<p> <i class = "fas fa-times"></i>Incorrect Answer</p>`;
+      
     }
     checkCount();
     //else statement to remind the player to select an option before pressing on cehck answer button
