@@ -1,5 +1,6 @@
 # Project Cosmo.IO
 ## Overview
+!!! MUST RUN ON A LIVE SERVER (eg. GitHub Pages / VSC Live Server extension) OR website will not work!! (due to textures and models)
 GitHub Pages link: https://brazeennp.github.io/FED_CosmoIO_website/
 
 Oh no!
