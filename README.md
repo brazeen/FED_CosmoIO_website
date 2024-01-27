@@ -41,7 +41,7 @@ As a user seeking a fun and immersive experience, I want to experience the websi
 
 From general users to competitive players, this site will give everyone a fun, challenging and enjoyable experience to learn new facts and improve their knowledge.
 
-Link to wireframe: KIV
+Link to wireframe: https://www.figma.com/file/xP1nhMGGa15kuIKq9YzPp0/Untitled?type=design&node-id=0%3A1&mode=design&t=gh4KoKB3AKzYDNSZ-1
 
 ## Features
 ### All pages have responsive design
@@ -77,6 +77,46 @@ Game Page
 5. Scoreboard (out of 10) that will increase by one each time the player answers correctly
 6. 4 appropriately spaced boxes with labels for each option (questions are multiple-choice with 4 options) (layout will change from column to row depending on the size of the screen)
 7. "Check Answer" button that will reveal if answer is wrong or correct, and then load the next question
+
+## References
+Assets:
+Icons for category:
+https://ionic.io/ionicons
+Math, general, music and all difficulty icons from
+https://ionic.io/ionicons
+Moon texture
+https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004720/lroc_color_poles_1k.jpg
+Mars texture
+https://planetpixelemporium.com/mars5672.html
+Jupiter texture
+https://planetpixelemporium.com/jupiter.html
+Earth texture
+https://planetpixelemporium.com/earth8081.html
+Saturn texture
+https://planetpixelemporium.com/saturn.html
+Story page background: (slightly edited on fotor)
+https://wallpapersafari.com/w/PEM7r2
+Low poly space shuttle 3d model on game page:
+https://sketchfab.com/3d-models/low-poly-space-shuttle-afa0ac2dc78744dfb54303226dcbe9b2
+play.html background:
+https://wallpapersafari.com/w/OGXT7Z
+
+Fonts:
+https://fonts.google.com/specimen/Orbitron?query=orbit
+https://fonts.google.com/specimen/Exo+2
+
+Lottie animations:
+Crying astronaut
+https://lottiefiles.com/animations/crying-baby-astronaut-MhjdKWRLpX
+
+Libraries/APIs used:
+Threejs
+https://threejs.org/
+Bootstrap 5
+https://getbootstrap.com/
+Trivia API
+KIV
+
 
 
 
