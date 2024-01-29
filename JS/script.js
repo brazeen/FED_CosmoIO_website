@@ -187,9 +187,13 @@ function checkAnswer(){
       //get the minus amount from session storage
       minusamt = sessionStorage.getItem('minusamt');
       let updatedValue = numericValue - minusamt;
-      console.log(minusamt)
+      if (updatedValue <= 0){
+        noFuel();
+      }
+      console.log(updatedValue)
       //set the updated width back to the _fuelBar element
       _fuelBar.style.width = updatedValue + '%';
+      
       
     }
     checkCount();
@@ -208,7 +212,9 @@ function checkCount(){
   askedCount++;
   setCount();
   if(askedCount == totalQuestion){
-    _result.innerHTML = `<p> Your score is ${correctScore}.</p>`;
+    _question.style.display = "none";
+    _options.style.display = "none";
+    _result.innerHTML = `<p> Your score is ${correctScore}. Cosmo has successfully returned to Earth!</p>`;
     _checkBtn.innerHTML = `<button class="btn btn-outline-light btn-lg p-3" onclick="window.location.href='index.html';">Exit</button>`;
   }else{
     setTimeout(() => {
@@ -220,5 +226,13 @@ function checkCount(){
 function setCount(){
   totalQuestion.textContent = totalQuestion;
   _correctScore.textContent = correctScore;
+}
+
+//have a function for if the fuel is zero
+function noFuel(){
+   _question.style.display = "none";
+   _options.style.display = "none";
+   _result.innerHTML = `<p> Your score is ${correctScore}. Cosmo has died.</p>`;
+   _checkBtn.innerHTML = `<button class="btn btn-outline-light btn-lg p-3" onclick="window.location.href='index.html';">Exit</button>`;
 }
 
