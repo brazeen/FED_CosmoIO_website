@@ -188,20 +188,20 @@ body {
     height: 20vh;
     overflow: hidden;
     --primary-color: #07afd9;
-  }
+}
   
   .radio-tile-group { /* for each radio tile */
     display: flex;
     flex-wrap: wrap;
     justify-content: center; /* responsiveness base on screen size */
-  }
+}
   
   .input-container {
     position: relative;
     height: 7rem;
     width: 7rem; /*creates square shape of tiles */
     margin: 0.5rem; /* spacing between each tile */
-  }
+}
   
   .input-container input {
     position: absolute;
@@ -211,7 +211,7 @@ body {
     cursor: pointer; /* give pointer effect when hover over */
     z-index: 2;
     opacity: 0;
-  }
+}
   
   .input-container .radio-tile {
     display: flex;
@@ -222,12 +222,12 @@ body {
     border: 2px solid var(--primary-color); /*colour*/
     border-radius: 8px;
     transition: all 300ms ease; /* Gives a smooth animation when hovering over a tile */
-  }
+}
   
   .input-container ion-icon {
     color: var(--primary-color);
     font-size: 3rem; /* this changes the overall size of the icon and text in the tile */
-  }
+}
   
   .input-container label {
     color: var(--primary-color);
@@ -235,23 +235,27 @@ body {
     font-weight: 600; /* text thickness */
     text-transform: uppercase; /* converts all letters into uppercase */
     letter-spacing: 1px; /* spaces between each letter */
-  }
+}
   
   input:checked+.radio-tile {
     background-color: var(--primary-color);
     box-shadow: 0 0 12px var(--primary-color);
     transform: scale(1.1); /*makes the tile pop out more when a tile is clicked to show that the tile is clicked*/
-  }
+}
   
   input:hover+.radio-tile {
     box-shadow: 0 0 12px var(--primary-color); /*gives a slight added hint of colour to show when the tile is hovered over*/
-  }
+}
   
   input:checked+.radio-tile ion-icon,
   input:checked+.radio-tile label {
     color: white; /*When clicked, the icon and text in the tile will change colour to white*/
-  }
+}
 
+/*the proceed button*/
+#playproceedbutton {
+    display: none;
+}
 /*------------------------------------------------STORY PAGE----------------------------------------------------------------*/
 /*change the navbar colour on this page since it is transparent in index.html*/
 #storynavbarcolour{

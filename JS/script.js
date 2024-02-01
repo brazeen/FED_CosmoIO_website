@@ -11,6 +11,13 @@ function radioValue(){
     uInput.push(catCheck);
     uInput.push(difCheck);
     console.log(uInput);
+    //make proceed button appear after difficulty selection
+    let b = document.getElementById("playproceedbutton");
+    if (!uInput.includes(null)) {
+      b.style.display = "inline-block";
+    } else {
+      b.style.display = "none";
+    }
   }
 
 
@@ -50,43 +57,7 @@ if (document.getElementById('easy') != null){
 //store this minus amount in the session storage
 
 
-//make proceed button appear after difficulty selection
-function toggleb(){
-  let b = document.getElementById("b");
-  if (uInput[1] == null){
-    b.ariaDisabled = true
-  }
-  else {
-    b.ariaDisabled = false
-  }
 
-  e.addEventListener("click", (a) => {
-    const value = a.currentTarget.value;
-    b.ariaDisabled = false
-
-    if (value === ""){
-      b.ariaDisabled = true;
-    }
-  })
-
-  n.addEventListener("click", (a) => {
-    const value = a.currentTarget.value;
-    b.ariaDisabled = false
-
-    if (value === ""){
-      b.ariaDisabled = true;
-    }
-  })
-
-  h.addEventListener("click", (a) => {
-    const value = a.currentTarget.value;
-    b.ariaDisabled = false
-
-    if (value === ""){
-      b.ariaDisabled = true;
-    }
-  })
-}
 
 var APIUrl = '';
 function setApiUrl(category) {
@@ -118,9 +89,7 @@ if (document.getElementById('Mathematics') != null){
     setApiUrl('music');
   });
 }
-else {
-  alert("Please select a category.")
-}
+
 
 //API--------------------------------------------------------------------------------------------------------------------
 //**HAVEN DECIDE WHETHER TO INCLUDE A PLAY AGAIN BUTTON OR LET PLAYER GO OUT OF THE GAME THAN COME BACK IN TO PLAY AGAIN**
