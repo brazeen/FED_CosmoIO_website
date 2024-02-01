@@ -149,7 +149,7 @@ body {
 }
 .playallcontainer h2{
     color: #07afd9;
-    padding-top: 10%;
+    
 }
 /*this is the heading that says cosmo.IO*/
 .playheading {
@@ -167,6 +167,7 @@ body {
     /*change the font size of the heading*/
     font-size: 55px;
     max-width: 75%;
+    padding: 3% 0%;
 }
 /*change the navbar colour on this page since it is transparent in index.html*/
 #playnavbarcolour{
@@ -178,7 +179,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;    /* Aligns elements to center of page */
-    height: 50vh;
+    padding: 6% 0%;
+    height: 20vh;
     overflow: hidden;
     --primary-color: #07afd9;
   }
