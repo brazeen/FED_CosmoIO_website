@@ -48,6 +48,7 @@ body {
     min-width: 100vw;
     /*align text to center*/
     text-align: center;
+    flex-direction: column;
 }
 
 /*this is the 3d space canvas so it always needs to be fixed position and under everything else*/
@@ -113,6 +114,10 @@ body {
     color: #ffffff;
     background: #000000;
 }
+/*LEADERBOARD SECTION IN HOME PAGE*/
+
+/*ABOUT SECTION IN HOME PAGE*/
+
 /*------------------------------------------------PLAY PAGE----------------------------------------------------------------*/
 .play{
     background-color: #000; /*I put bkground color first*/
