@@ -87,6 +87,41 @@ function toggleb(){
     }
   })
 }
+
+var APIUrl = '';
+function setApiUrl(category) {
+  // Update the apiurl variable based on the button pressed
+  switch (category) {
+      case 'General':
+        APIUrl = 'https://opentdb.com/api.php?amount=10&category=9&difficulty=medium&type=multiple';
+        break;
+      case 'Mathematics':
+        APIUrl = 'https://opentdb.com/api.php?amount=10&category=19&difficulty=medium&type=multiple'
+        break;
+      case 'music':
+        APIUrl ='https://opentdb.com/api.php?amount=10&category=12&difficulty=medium&type=multiple'
+        break;
+  }
+  // Log the selected difficulty to the console
+  sessionStorage.setItem('Category', APIUrl);
+  console.log(`Selected category: ${category}, API Url: ${APIUrl}`);
+}
+
+if (document.getElementById('Mathematics') != null){
+  document.getElementById('Mathematics').addEventListener('click', function() {
+    setApiUrl('Mathematics');
+  });
+  document.getElementById('General').addEventListener('click', function() {
+    setApiUrl('General');
+  });
+  document.getElementById('music').addEventListener('click', function() {
+    setApiUrl('music');
+  });
+}
+else {
+  alert("Please select a category.")
+}
+
 //API--------------------------------------------------------------------------------------------------------------------
 //**HAVEN DECIDE WHETHER TO INCLUDE A PLAY AGAIN BUTTON OR LET PLAYER GO OUT OF THE GAME THAN COME BACK IN TO PLAY AGAIN**
 //get the Id 'questions' from game.html
@@ -107,6 +142,7 @@ let fuelpercent = 100
 
 let correctAnswer = " ", correctScore = askedCount = 0, totalQuestion = 10;
 
+const proceed_btn = document.getElementById('b')
 //eventlistener to check player's answer when they click on the button check answer
 function eventlistener(){
   _checkBtn.addEventListener('click',checkAnswer);
@@ -119,9 +155,26 @@ document.addEventListener('DOMContentLoaded',() =>{
   _totalQuestion.textContent = totalQuestion;
   _correctScore.textContent = correctScore;
 });
+//check for if category and difficulty is selected
+function checkSelection() {
+  if (uInput[0] == null) {
+    alert("Please choose a category");
+  }
+  else if (uInput[1] == null) {
+    alert("Please choose a difficulty")
+  }
+  else if (uInput == null) {
+    alert("Please choose a category and difficult")
+  }
+}
+
+
+
 async function loadQuestion(){
   /*API link*/
-  const APIUrl = 'https://opentdb.com/api.php?amount=10&category=9&difficulty=medium&type=multiple';
+  
+  APIUrl = sessionStorage.getItem('Category');
+  console.log(APIUrl);
   /*fetch API*/
   const result = await fetch(`${APIUrl}`);
   const data = await result.json();
