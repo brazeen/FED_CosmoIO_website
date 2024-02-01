@@ -99,6 +99,7 @@ let _correctScore = document.getElementById('correct-score');
 let _totalQuestion = document.getElementById('total-questions');
 const _checkBtn = document.getElementById('check-answer');
 const _result = document.getElementById('result')
+const _exitBtn = document.getElementById('exit-game')
 //fuelbar element and fuel percentage
 const _fuelBar = document.getElementById('fuelamt')
 let fuelpercent = 100
@@ -215,7 +216,8 @@ function checkCount(){
     _question.style.display = "none";
     _options.style.display = "none";
     _result.innerHTML = `<p> Your score is ${correctScore}. Cosmo has successfully returned to Earth!</p>`;
-    _checkBtn.innerHTML = `<button class="btn btn-outline-light btn-lg p-3" onclick="window.location.href='index.html';">Exit</button>`;
+    _checkBtn.style.display = "none";
+    _exitBtn.style.display = "block";
   }else{
     setTimeout(() => {
       loadQuestion()
@@ -233,6 +235,7 @@ function noFuel(){
    _question.style.display = "none";
    _options.style.display = "none";
    _result.innerHTML = `<p> Your score is ${correctScore}. Cosmo has died.</p>`;
-   _checkBtn.innerHTML = `<button class="btn btn-outline-light btn-lg p-3" onclick="window.location.href='index.html';">Exit</button>`;
+   _checkBtn.style.display = "none";
+   _exitBtn.style.display = "block";
 }
 

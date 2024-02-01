@@ -430,7 +430,7 @@ body {
 .quiz-foot button {
     transform: scale(0.95)
 }
-#play-again{
+#exit-game {
     display: none;
 }
 
