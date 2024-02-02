@@ -131,3 +131,86 @@ window.onmousemove = function(ev){
   oldx = ev.x;
   oldy = ev.y;
 }
+
+/* -----------------FOR LEADERBOARD-------------------- */
+document.addEventListener("ContentLoaded", function (){
+  const APIKEY = "65b79e6b8d861513b7308ef2";
+  getInfo();
+  document.getElementById(/*IDK THE ID*/).style.display = "none"
+
+  document.getElementById(/*IDK THE ID*/).addEventListener("click", function (e){
+    e.preventDefault();
+
+    let name = document.getElementById("Name").value;
+    let points = document.getElementById("Points").value;
+    let diff = document.getElementById("Difficulty").value;
+    let category = document.getElementById("Category").value;
+    let fuelleft = document.getElementById("Fuel left").value;
+
+    let jsondata = {
+      "Name": name,
+      "Points": points,
+      "Difficulty": diff,
+      "Category": category,
+      "Fuel left": fuelleft
+    };
+
+    let settings = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-apikey": APIKEY,
+        "Cache-Control": "no-cache"
+      },
+      body: JSON.stringify(jsondata),
+      beforeSend: function () {
+        document.getElementById().disabled = true;
+      }
+    }
+
+    fetch("https://cosmoboard-64b9.restdb.io/rest/playerstats", settings)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        document.getElementById(/*IDK THE ID*/).disabled = false;
+        document.getElementById().style.display = "block";
+        setTimeout(function(){
+          document.getElementById().style.display = "none";
+        }, 3000);
+        getInfo();
+        document.getElementById().reset();
+      });
+  });//end click
+
+  
+  // By default, we only retrieve 10 results
+  function getInfo(limit = 10, all = true) {
+
+    //[STEP 7]: Create our AJAX settings
+    let settings = {
+      method: "GET", //[cher] we will use GET to retrieve info
+      headers: {
+        "Content-Type": "application/json",
+        "x-apikey": APIKEY,
+        "Cache-Control": "no-cache"
+      },
+    }
+
+    // Once we get the response, we modify our table content by creating the content internally. We run a loop to continuously add on data
+    fetch("https://cosmoboard-64b9.restdb.io/rest/playerstats", settings)
+      .then(response => response.json())
+      .then(response => {
+        let content = "";
+
+        for (var i = 0; i < response.length && i < limit; i++) {
+          content = `${content}<tr id='${response[i]._id}'>
+          <td>${response[i].name}</td>
+          <td>${response[i].Points}</td>
+          <td>${response[i].Difficulty}</td>
+          <td>${response[i].Category}</td>
+          <td>${response[i].fuelleft}</td>
+          <td><a href='#' class='delete' data-id='${response[i]._id}'>Del</a></td>
+          <td><a href='#update-contact-container' class='update' data-id='${response[i]._id}' data-Name='${response[i].name}' data-Points='${response[i].Points}' data-Difficulty='${response[i].Difficulty}' data-Category='${response[i].Category}' data-fuelleft='${response[i].fuelleft}'>Update</a></td></tr>`;
+        }
+      })
+}})
