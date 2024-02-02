@@ -1,24 +1,32 @@
 //PLAY PAGE FOR GETTING INPUT--------------------------------------------------------------------------------------------------------------------
-var uInput;
 
 function radioValue(){
-    //set array to store radio input value
-    uInput = []
-    //check when the radio is checked and store in a var
-    var catCheck = document.querySelector('[name=radio]:checked')
-    var difCheck = document.querySelector('[name=radio1]:checked')
-    //push in the var to store the radio values
-    uInput.push(catCheck);
-    uInput.push(difCheck);
-    console.log(uInput);
-    //make proceed button appear after difficulty selection
-    let b = document.getElementById("playproceedbutton");
-    if (!uInput.includes(null)) {
-      b.style.display = "inline-block";
-    } else {
-      b.style.display = "none";
-    }
+  //set array to store radio input value
+  var uInput = []
+  //check when the radio is checked and store in a var
+  var catCheck = document.querySelector('[name=radio]:checked')
+  var difCheck = document.querySelector('[name=radio1]:checked')
+  var nameinput = document.querySelector('.nameinput')
+  var namevalue = ""
+  //push in the var to store the radio values
+  uInput.push(catCheck);
+  uInput.push(difCheck);
+  console.log(uInput);
+  if (!uInput.includes(null)) {
+    nameinput.style.display = "block";
+    namevalue = document.getElementById("usernameinput").value
+    //store the name value in sessionstorage so that it can be accessed to add it to the leaderboard
+    sessionStorage.setItem('username', namevalue);
   }
+  console.log(namevalue);
+  //make proceed button appear after difficulty selection and username entering
+  let b = document.getElementById("playproceedbutton");
+  if (namevalue != "") {
+    b.style.display = "inline-block";
+  } else {
+    b.style.display = "none";
+  }
+}
 
 
 //set the minus amount from fuel bar 

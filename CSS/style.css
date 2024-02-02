@@ -181,6 +181,45 @@ body {
     background-color: #070022;
 }
 
+/*name input section*/
+.nameinput {
+    position: relative;
+    display: none;
+}
+
+.nameinput label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #fff;
+    padding: 0 5px;
+    pointer-events: none;
+    transition: 0.5s; /*for when the input is focused on*/
+}
+
+.nameinput input {
+    width: 320px;
+    height: 40px;
+    font-size: 16px;
+    color: #fff;
+    padding: 0 10px;
+    /*remove the background and make the effect similar to the bootstrap proceed buttons*/
+    background: transparent;
+    border: 1.2px solid #5d7cbe;
+    outline: none;
+    /*rounded edge*/
+    border-radius: 5px;
+}
+
+.nameinput input:focus~label,
+.nameinput input:valid~label {
+    top: 0;
+    font-size: 12px;
+    background: #5d7cbe;
+    border-radius: 5%;
+}
 /*-----CATEGORY SELECTION SECTION-------*/
 .selectcontainer {
     display: flex;
@@ -189,7 +228,7 @@ body {
     padding: 6% 0%;
     height: 20vh;
     overflow: hidden;
-    --primary-color: #07afd9;
+    --primary-color: #5d7cbe;
 }
   
   .radio-tile-group { /* for each radio tile */
@@ -232,7 +271,7 @@ body {
 }
   
   .input-container label {
-    color: var(--primary-color);
+    color: #fff;
     font-size: 0.80rem; /*text sizing*/
     font-weight: 600; /* text thickness */
     text-transform: uppercase; /* converts all letters into uppercase */
@@ -257,6 +296,7 @@ body {
 /*the proceed button*/
 #playproceedbutton {
     display: none;
+    color: #fff;
 }
 /*------------------------------------------------STORY PAGE----------------------------------------------------------------*/
 /*change the navbar colour on this page since it is transparent in index.html*/

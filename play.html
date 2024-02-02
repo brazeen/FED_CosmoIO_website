@@ -54,11 +54,13 @@
     </nav>
     <main class="play">
         <div class="playallcontainer">
-            <h1 class="playheading">Category Selection</h1>
-            
+            <h1 class="playheading">Setup</h1>
+            <div class="nameinput">
+              <input type="text" id="usernameinput" oninput="radioValue()" required>
+              <label for="" id="usernamelabel" >Username</label>
+            </div>
             <div class="selectcontainer">
                 <div class="radio-tile-group">
-          
                   <div class="input-container">
                     <input id="Mathematics" type="radio" onclick="radioValue()" name="radio" value="Mathematics">
                     <div class="radio-tile">
@@ -114,7 +116,7 @@
                 </div>
             </div>
             <!-- Proceed button to story page (bootstrap)-->
-            <button id="playproceedbutton" type="button" class="btn btn-outline-info" onclick="window.location.href='story.html'">Proceed</button>
+            <button id="playproceedbutton" type="button" class="btn btn-outline-primary" onclick="window.location.href='story.html'">Proceed</button>
         </div>
         
         <!--for the category and difficulty selection icons-->
