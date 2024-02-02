@@ -115,7 +115,9 @@ body {
     background: #000000;
 }
 /*LEADERBOARD SECTION IN HOME PAGE*/
-
+.container-lb{
+    color: white;
+}
 /*ABOUT SECTION IN HOME PAGE*/
 
 /*------------------------------------------------PLAY PAGE----------------------------------------------------------------*/
