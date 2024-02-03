@@ -115,6 +115,8 @@ const _exitBtn = document.getElementById('exit-game')
 //fuelbar element and fuel percentage
 const _fuelBar = document.getElementById('fuelamt')
 let fuelpercent = 100
+//points
+let gamepoints = 0
 
 
 let correctAnswer = " ", correctScore = askedCount = 0, totalQuestion = 10;
@@ -243,9 +245,12 @@ function checkCount(){
   askedCount++;
   setCount();
   if(askedCount == totalQuestion){
+    minusamt = sessionStorage.getItem('minusamt');
+    //points are calculated by fuel left * the difficulty multiplier (easy is 10, medium is 20, hard is 50)
+    gamepoints = parseInt(_fuelBar.style.width, 10) * minusamt
     _question.style.display = "none";
     _options.style.display = "none";
-    _result.innerHTML = `<p> Your score is ${correctScore}. Cosmo has successfully returned to Earth!</p>`;
+    _result.innerHTML = `<p> You scored ${gamepoints} points. Thanks to your knowledge, Cosmo has successfully returned to Earth!</p>`;
     _checkBtn.style.display = "none";
     _exitBtn.style.display = "block";
   }else{
