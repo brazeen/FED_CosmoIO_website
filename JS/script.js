@@ -47,6 +47,7 @@ function setminusamount(difficulty) {
   }
   // Log the selected difficulty to the console
   sessionStorage.setItem('minusamt', minusamt);
+  sessionStorage.setItem('difficulty', difficulty)
   console.log(`Selected difficulty: ${difficulty}, Minus amount: ${minusamt}`);
 }
 //event listeners
@@ -248,6 +249,9 @@ function checkCount(){
     minusamt = sessionStorage.getItem('minusamt');
     //points are calculated by fuel left * the difficulty multiplier (easy is 10, medium is 20, hard is 50)
     gamepoints = parseInt(_fuelBar.style.width, 10) * minusamt
+    //keep some variables in sessionstorage in case they need to be accessed in indexscript to add in to database
+    sessionStorage.setItem('fuelleft', parseInt(_fuelBar.style.width, 10))
+    sessionStorage.setItem('points', gamepoints)
     _question.style.display = "none";
     _options.style.display = "none";
     _result.innerHTML = `<p> You scored ${gamepoints} points. Thanks to your knowledge, Cosmo has successfully returned to Earth!</p>`;
