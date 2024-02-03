@@ -136,25 +136,24 @@ window.onmousemove = function(ev){
 document.addEventListener("DOMContentLoaded", function (){
   const APIKEY = "65b79e6b8d861513b7308ef2";
   getInfo();
-  document.getElementById(/*IDK THE ID*/).style.display = "none"
-
+  //[STEP 1]: Create our submit form listener
   document.getElementById("exit-game").addEventListener("click", function (e){
     e.preventDefault();
-
-    let name = document.getElementById("usernameinput").value;
-    let points = document.getElementById("Points").value;
-    let diff = document.getElementById("radio1").value;
-    let category = document.getElementsByName("radio").value;
-    let fuelleft = document.getElementById("Fuel left").value;
-
+    //[STEP 2]: Let's retrieve form data
+    let name = document.getElementById("username").value;
+    let points = document.getElementById("points").value;
+    let diff = document.getElementById("difficulty").value;
+    let category = document.getElementsByName("Category").value;
+    let fuelleft = document.getElementById("fuelleft").value;
+    //[STEP 3]: Get form values when the user clicks on send
     let jsondata = {
       "Name": name,
       "Points": points,
-      "Difficulty": diff,
-      "Category": category,
+      "Difficulty": difficulty,
+      "Category": Category,
       "Fuel left": fuelleft
     };
-
+    //[STEP 4]: Create our AJAX settings. Take note of API key
     let settings = {
       method: "POST",
       headers: {
@@ -164,18 +163,18 @@ document.addEventListener("DOMContentLoaded", function (){
       },
       body: JSON.stringify(jsondata),
       beforeSend: function () {
-        document.getElementById().disabled = true;
+        document.getElementById("exit-game").disabled = true;
       }
     }
-
+    //[STEP 5]: Send our AJAX request over to the DB and print response of the RESTDB storage to console.
     fetch("https://cosmoboard-64b9.restdb.io/rest/playerstats", settings)
       .then(response => response.json())
       .then(data => {
         console.log(data);
-        document.getElementById(/*IDK THE ID*/).disabled = false;
-        document.getElementById().style.display = "block";
+        document.getElementById("exit-game").disabled = false;
+        document.getElementById("contact-list").style.display = "block";
         setTimeout(function(){
-          document.getElementById().style.display = "none";
+          document.getElementById("contact-list").style.display = "none";
         }, 3000);
         getInfo();
         document.getElementById().reset();
@@ -210,7 +209,7 @@ document.addEventListener("DOMContentLoaded", function (){
           <td>${response[i].Category}</td>
           <td>${response[i].fuelleft}</td>
           <td><a href='#' class='delete' data-id='${response[i]._id}'>Del</a></td>
-          <td><a href='#update-contact-container' class='update' data-id='${response[i]._id}' data-Name='${response[i].name}' data-Points='${response[i].Points}' data-Difficulty='${response[i].Difficulty}' data-Category='${response[i].Category}' data-fuelleft='${response[i].fuelleft}'>Update</a></td></tr>`;
+          <td><a href='#update-contact-container' class='update' data-Name='${response[i].name}' data-Points='${response[i].Points}' data-Difficulty='${response[i].Difficulty}' data-Category='${response[i].Category}' data-fuelleft='${response[i].fuelleft}'>Update</a></td></tr>`;
         }
       })
     document.getElementById("contact-list").getElementsByTagName('tbody')[0].innerHTML = content;
