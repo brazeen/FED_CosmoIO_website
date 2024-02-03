@@ -133,18 +133,18 @@ window.onmousemove = function(ev){
 }
 
 /* -----------------FOR LEADERBOARD-------------------- */
-document.addEventListener("ContentLoaded", function (){
+document.addEventListener("DOMContentLoaded", function (){
   const APIKEY = "65b79e6b8d861513b7308ef2";
   getInfo();
   document.getElementById(/*IDK THE ID*/).style.display = "none"
 
-  document.getElementById(/*IDK THE ID*/).addEventListener("click", function (e){
+  document.getElementById("exit-game").addEventListener("click", function (e){
     e.preventDefault();
 
-    let name = document.getElementById("Name").value;
+    let name = document.getElementById("usernameinput").value;
     let points = document.getElementById("Points").value;
-    let diff = document.getElementById("Difficulty").value;
-    let category = document.getElementById("Category").value;
+    let diff = document.getElementById("radio1").value;
+    let category = document.getElementsByName("radio").value;
     let fuelleft = document.getElementById("Fuel left").value;
 
     let jsondata = {
@@ -213,4 +213,5 @@ document.addEventListener("ContentLoaded", function (){
           <td><a href='#update-contact-container' class='update' data-id='${response[i]._id}' data-Name='${response[i].name}' data-Points='${response[i].Points}' data-Difficulty='${response[i].Difficulty}' data-Category='${response[i].Category}' data-fuelleft='${response[i].fuelleft}'>Update</a></td></tr>`;
         }
       })
+    document.getElementById("contact-list").getElementsByTagName('tbody')[0].innerHTML = content;
 }})
