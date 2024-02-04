@@ -269,7 +269,7 @@ function setCount(){
   _correctScore.textContent = correctScore;
 }
 
-//have a function for if the fuel is zero
+//have a function for if the fuel is zero, and remove all the other objects so that it does not load a next question
 function noFuel(){
    _question.style.display = "none";
    _options.style.display = "none";
