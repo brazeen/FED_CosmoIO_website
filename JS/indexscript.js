@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", function (){
     let diff = sessionStorage.getItem("difficulty");
     let category = sessionStorage.getItem("Category");
     let fuelleft = sessionStorage.getItem("fuelleft");
-    //[STEP 3]: Get form values when the user clicks on send
+    //[STEP 3]: Get form values
     let jsondata = {
       "Name": name,
       "Points": points,
@@ -167,17 +167,18 @@ document.addEventListener("DOMContentLoaded", function (){
       }
     }*/
     var settings = {
-      "async": true,
-      "crossDomain": true,
-      "url": "https://cosmoboard-64b9.restdb.io/rest/playerstats",
-      "method": "POST",
-      "headers": {
+      async: true,
+      crossDomain: true,
+      url: "https://cosmoboard-64b9.restdb.io/rest/playerstats",
+      method: "POST",
+      headers: {
         "content-type": "application/json",
         "x-apikey": APIKEY,
-        "cache-control": "no-cache"
+        "cache-control": "no-cache",
+        body: data
       },
-      "processData": false,
-      "data": JSON.stringify(jsondata)
+      processData: false,
+      data: JSON.stringify(jsondata)
     }
     
     $.ajax(settings).done(function (response) {
@@ -187,14 +188,28 @@ document.addEventListener("DOMContentLoaded", function (){
     fetch("https://cosmoboard-64b9.restdb.io/rest/playerstats", settings)
       .then(response => response.json())
       .then(data => {
-        console.log(data);
+        /*console.log(data);
         document.getElementById("exit-game").disabled = false;
         document.getElementById("data-list").style.display = "block";
         setTimeout(function(){
           document.getElementById("data-list").style.display = "none";
         }, 3000);
         getInfo();
-        document.getElementById("exit-game").reset();
+        document.getElementById("exit-game").reset();*/
+        //sort based on points in descending order
+        data.sort((a, b) => b.points - a.points);
+
+        let content = "";
+
+        for (var i = 0; i < data.length && i < limit; i++) {
+          content = `${content}<tr id='${data[i]._id}'>
+          <td>${data[i].name}</td>
+          <td>${data[i].points}</td>
+          <td>${data[i].difficulty}</td>
+          <td>${data[i].Category}</td>
+          <td>${data[i].fuelleft}</td>`;
+        }
+        document.getElementById("data-list").getElementsByTagName('tbody')[0].innerHTML = content;
       });
   });//end click
 
@@ -233,7 +248,7 @@ document.addEventListener("DOMContentLoaded", function (){
       .then(response => {
         //sort based on points in descending order
         response.sort((a, b) => b.points - a.points);
-        
+
         let content = "";
 
         for (var i = 0; i < response.length && i < limit; i++) {
