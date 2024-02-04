@@ -67,8 +67,10 @@ body {
     /*column so the texts can be on top of one another, not beside*/
     flex-direction: column;
     /*make it roughly less than 50% of the width and height*/
-    min-height: 30vh;
+    min-height: 50vh;
     min-width: 50vw;
+    /*push it down from the top a little*/
+    padding-top: 150px;
     /*add some margin around it*/
     margin: 5% auto;
 }
@@ -117,6 +119,7 @@ body {
 /*LEADERBOARD SECTION IN HOME PAGE*/
 .container-lb{
     color: white;
+    height: 75vh;
 }
 .table{
     color: white;
@@ -125,7 +128,16 @@ body {
     color: white;
 }
 /*ABOUT SECTION IN HOME PAGE*/
-
+#aboutcard {
+    width: 50vw;
+    /*for the text to be noticeable*/
+    color: #fff;
+    background: rgb(15, 1, 65, 0.35);
+    border-radius: 3%;
+    /*space around the about section (top bottom) to make it more spacious layout*/
+    margin: 100px 0; 
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
 /*------------------------------------------------PLAY PAGE----------------------------------------------------------------*/
 .play{
     background-color: #000; /*I put bkground color first*/
@@ -523,5 +535,11 @@ body {
     }
     .quiz-foot button{
         font-size: 1rem;
+    }
+}
+
+@media(max-width: 810px){
+    #aboutcard {
+        width: 100vw;
     }
 }
