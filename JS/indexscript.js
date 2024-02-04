@@ -212,11 +212,11 @@ document.addEventListener("DOMContentLoaded", function (){
       },
     }*/
     var settings = {
-      "async": true,
-      "crossDomain": true,
-      "url": "https://cosmoboard-64b9.restdb.io/rest/playerstats",
-      "method": "GET",
-      "headers": {
+      async: true,
+      crossDomain: true,
+      url: "https://cosmoboard-64b9.restdb.io/rest/playerstats",
+      method: "GET",
+      headers: {
         "content-type": "application/json",
         "x-apikey": APIKEY,
         "cache-control": "no-cache"
@@ -231,17 +231,20 @@ document.addEventListener("DOMContentLoaded", function (){
     fetch("https://cosmoboard-64b9.restdb.io/rest/playerstats", settings)
       .then(response => response.json())
       .then(response => {
+        //sort based on points in descending order
+        response.sort((a, b) => b.points - a.points);
+        
         let content = "";
 
         for (var i = 0; i < response.length && i < limit; i++) {
-          content = `${content}
+          content = `${content}<tr id='${response[i]._id}'>
           <td>${response[i].name}</td>
           <td>${response[i].points}</td>
           <td>${response[i].difficulty}</td>
           <td>${response[i].Category}</td>
           <td>${response[i].fuelleft}</td>`;
         }
-        document.getElementById("contact-list").getElementsByTagName('tbody')[0].innerHTML = content;
+        document.getElementById("data-list").getElementsByTagName('tbody')[0].innerHTML = content;
       })
     
 }})
