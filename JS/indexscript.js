@@ -134,17 +134,17 @@ window.onmousemove = function(ev){
 
 /* -----------------FOR LEADERBOARD-------------------- */
 document.addEventListener("DOMContentLoaded", function (){
-  const APIKEY = "65b79e6b8d861513b7308ef2";
-  getInfo();
+  const APIKEY = "65bf102f0496a574bb2b4723";
+  getInfo(10,true);
   //[STEP 1]: Create our submit form listener
   document.getElementById("exit-game").addEventListener("click", function (e){
     e.preventDefault();
     //[STEP 2]: Let's retrieve form data
-    let name = document.getElementById("username").value;
-    let points = document.getElementById("points").value;
-    let diff = document.getElementById("difficulty").value;
-    let category = document.getElementsByName("Category").value;
-    let fuelleft = document.getElementById("fuelleft").value;
+    let name = sessionStorage.getItem("username");
+    let points = sessionStorage.getItem("points");
+    let diff = sessionStorage.getItem("difficulty");
+    let category = sessionStorage.getItem("Category");
+    let fuelleft = sessionStorage.getItem("fuelleft");
     //[STEP 3]: Get form values when the user clicks on send
     let jsondata = {
       "Name": name,
@@ -154,7 +154,7 @@ document.addEventListener("DOMContentLoaded", function (){
       "Fuel left": fuelleft
     };
     //[STEP 4]: Create our AJAX settings. Take note of API key
-    let settings = {
+    /*let settings = {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -165,19 +165,36 @@ document.addEventListener("DOMContentLoaded", function (){
       beforeSend: function () {
         document.getElementById("exit-game").disabled = true;
       }
+    }*/
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "https://cosmoboard-64b9.restdb.io/rest/playerstats",
+      "method": "POST",
+      "headers": {
+        "content-type": "application/json",
+        "x-apikey": APIKEY,
+        "cache-control": "no-cache"
+      },
+      "processData": false,
+      "data": JSON.stringify(jsondata)
     }
+    
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+    });
     //[STEP 5]: Send our AJAX request over to the DB and print response of the RESTDB storage to console.
     fetch("https://cosmoboard-64b9.restdb.io/rest/playerstats", settings)
       .then(response => response.json())
       .then(data => {
         console.log(data);
         document.getElementById("exit-game").disabled = false;
-        document.getElementById("contact-list").style.display = "block";
+        document.getElementById("data-list").style.display = "block";
         setTimeout(function(){
-          document.getElementById("contact-list").style.display = "none";
+          document.getElementById("data-list").style.display = "none";
         }, 3000);
         getInfo();
-        document.getElementById().reset();
+        document.getElementById("exit-game").reset();
       });
   });//end click
 
@@ -186,14 +203,29 @@ document.addEventListener("DOMContentLoaded", function (){
   function getInfo(limit = 10, all = true) {
 
     //[STEP 7]: Create our AJAX settings
-    let settings = {
+    /*let settings = {
       method: "GET", //[cher] we will use GET to retrieve info
       headers: {
         "Content-Type": "application/json",
         "x-apikey": APIKEY,
         "Cache-Control": "no-cache"
       },
+    }*/
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "https://cosmoboard-64b9.restdb.io/rest/playerstats",
+      "method": "GET",
+      "headers": {
+        "content-type": "application/json",
+        "x-apikey": APIKEY,
+        "cache-control": "no-cache"
+      }
     }
+    
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+    });
 
     // Once we get the response, we modify our table content by creating the content internally. We run a loop to continuously add on data
     fetch("https://cosmoboard-64b9.restdb.io/rest/playerstats", settings)
@@ -202,15 +234,14 @@ document.addEventListener("DOMContentLoaded", function (){
         let content = "";
 
         for (var i = 0; i < response.length && i < limit; i++) {
-          content = `${content}<tr id='${response[i]._id}'>
+          content = `${content}
           <td>${response[i].name}</td>
-          <td>${response[i].Points}</td>
-          <td>${response[i].Difficulty}</td>
+          <td>${response[i].points}</td>
+          <td>${response[i].difficulty}</td>
           <td>${response[i].Category}</td>
-          <td>${response[i].fuelleft}</td>
-          <td><a href='#' class='delete' data-id='${response[i]._id}'>Del</a></td>
-          <td><a href='#update-contact-container' class='update' data-Name='${response[i].name}' data-Points='${response[i].Points}' data-Difficulty='${response[i].Difficulty}' data-Category='${response[i].Category}' data-fuelleft='${response[i].fuelleft}'>Update</a></td></tr>`;
+          <td>${response[i].fuelleft}</td>`;
         }
+        document.getElementById("contact-list").getElementsByTagName('tbody')[0].innerHTML = content;
       })
-    document.getElementById("contact-list").getElementsByTagName('tbody')[0].innerHTML = content;
+    
 }})

@@ -134,6 +134,12 @@ document.addEventListener('DOMContentLoaded',() =>{
   eventlistener();
   _totalQuestion.textContent = totalQuestion;
   _correctScore.textContent = correctScore;
+  
+  _exitBtn.addEventListener('click',function (e){
+    e.preventDefault();
+
+    window.location.href = "index.html"; //redirect to index.html after adding the data
+  });
 });
 //check for if category and difficulty is selected
 function checkSelection() {
