@@ -273,7 +273,7 @@ function setCount(){
 function noFuel(){
    _question.style.display = "none";
    _options.style.display = "none";
-   _result.innerHTML = `<p> Your score is ${correctScore}. Cosmo has died.</p>`;
+   _result.innerHTML = `<p> You have run out of fuel. Cosmo has died.</p>`;
    _checkBtn.style.display = "none";
    _exitBtn.style.display = "block";
 }
