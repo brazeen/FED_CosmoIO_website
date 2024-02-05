@@ -132,11 +132,17 @@ body {
     width: 50vw;
     /*for the text to be noticeable*/
     color: #fff;
-    background: rgb(15, 1, 65, 0.35);
+    background: rgb(15, 1, 65, 0.5);
     border-radius: 3%;
     /*space around the about section (top bottom) to make it more spacious layout*/
     margin: 100px 0; 
+    line-height: 30px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+ #aboutcard .card-title {
+    font-family: 'Orbitron', sans-serif;
+    text-shadow: 2px 2px 5px #0f52e2;
 }
 /*------------------------------------------------PLAY PAGE----------------------------------------------------------------*/
 .play{
