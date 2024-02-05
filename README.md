@@ -15,7 +15,7 @@ Face questions from math, music, and general knowledge categories.
 Correct answers maintain our fuel gauge, propelling us closer to home, while wrong answers will decrease the fuel gauge, leaving us with a lesser chance of getting back!
 The more questions you answer correctly, the closer we get to a safe return!
 Compete with other players to reach the highest fuel percentage left when you reach Earth and top the leaderboards with your knowledge skills!
-Assemble your trivia knowledge and let's soar through the stars together. Get ready for an astronomical adventure that combines learning and fun. Are you ready to help Cosmo make it back to Earth?
+Assemble your trivia knowledge and soar through the stars together. Get ready for an astronomical adventure that combines learning and fun. Are you ready to help Cosmo make it back to Earth?
 
 Let your cosmic quest begin! 
 
@@ -59,11 +59,18 @@ Home Page
 1. 3D background with animated and appropriately textured planets and stars
 2. Camera moves slightly with mouse when mouse is moving around
 3. Blue neon effect on the title "Cosmo.IO"
-4. Button that can be pressed to redirect to the "Play" page and start the game, including hover effects (centered and big so players cannot miss it)
+4. Call-to-action button that can be pressed to redirect to the "Play" page and start the game, including hover effects (centered and big so players cannot miss it)
 5. Navigation bar on this page has a transparent background for a nice and integrated effect
+6. Real-time game leaderboard to see who has the most points (points are calculated using fuel left * difficulty multiplier)
+7. 'About' section at the bottom if players would like to read Cosmo's story, as well as the technologies used in the game
 
 Play Page 
-
+1. Neon Difficulty and Category buttons to select category
+2. Text form with animations for player to enter username (which will be shown on the leaderboard)
+3. Data validation function to check if difficulty, category and username have all been selected before user can proceed
+4. HD background of stars
+5. Neon text effect for "Setup"
+   
 Story Page
 1. HD edited spaceship cockpit background
 2. High definition looped Lottie animation of crying astronaut
@@ -78,6 +85,9 @@ Game Page
 5. Scoreboard (out of 10) that will increase by one each time the player answers correctly
 6. 4 appropriately spaced boxes with labels for each option (questions are multiple-choice with 4 options) (layout will change from column to row depending on the size of the screen)
 7. "Check Answer" button that will reveal if answer is wrong or correct, and then load the next question
+8. Box with category name that is chosen
+9. Message to display points and status when game is over (if fuel is 0, player has failed but if fuel is > 0 after 10 questions, points will be shown along with a congratulatory message)
+10. Exit button after game has ended to return to home page
 
 ## References
 Assets:
@@ -116,7 +126,10 @@ https://threejs.org/
 Bootstrap 5
 https://getbootstrap.com/
 Trivia API
-https://opentdb.com
+https://opentdb.com/
+JQuery
+https://jquery.com/
+
 
 
 
