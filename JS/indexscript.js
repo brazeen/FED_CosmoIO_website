@@ -136,80 +136,81 @@ window.onmousemove = function(ev){
 document.addEventListener("DOMContentLoaded", function (){
   const APIKEY = "65bf102f0496a574bb2b4723";
   getInfo(10,true);
+  //[STEP 2]: Let's retrieve form data
+    
+  let name = sessionStorage.getItem("username");
+  let points = sessionStorage.getItem("points");
+  let difficulty = sessionStorage.getItem("difficulty");
+  let Category = sessionStorage.getItem("CategoryName");
+  let fuelleft = sessionStorage.getItem("fuelleft");
+  //[STEP 3]: Get form values
+  let jsondata = {
+    "Name": name,
+    "Points": points,
+    "Difficulty": difficulty,
+    "Category": Category,
+    "Fuel left": fuelleft
+  };
+  //[STEP 4]: Create our AJAX settings. Take note of API key
+  /*let settings = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "x-apikey": APIKEY,
+      "Cache-Control": "no-cache"
+    },
+    body: JSON.stringify(jsondata),
+    beforeSend: function () {
+      document.getElementById("exit-game").disabled = true;
+    }
+  }*/
+  var settings = {
+    async: true,
+    crossDomain: true,
+    url: "https://cosmoboard-64b9.restdb.io/rest/playerstats",
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      "x-apikey": APIKEY,
+      "cache-control": "no-cache",
+    },
+    processData: false,
+    body: JSON.stringify(jsondata)
+  }
+  
+  $.ajax(settings).done(function (response) {
+    console.log(response);
+  });
+  //[STEP 5]: Send our AJAX request over to the DB and print response of the RESTDB storage to console.
+  fetch("https://cosmoboard-64b9.restdb.io/rest/playerstats", settings)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      /*document.getElementById("exit-game").disabled = false;
+      document.getElementById("data-list").style.display = "block";
+      setTimeout(function(){
+        document.getElementById("data-list").style.display = "none";
+      }, 3000);
+      getInfo();
+      document.getElementById("exit-game").reset();*/
+      //sort based on points in descending order
+      data.sort((a, b) => b.points - a.points);
+
+      let content = "";
+
+      for (var i = 0; i < data.length && i < limit; i++) {
+        content = `${content}<tr id='${data[i]._id}'>
+        <td>${data[i].name}</td>
+        <td>${data[i].points}</td>
+        <td>${data[i].difficulty}</td>
+        <td>${data[i].Category}</td>
+        <td>${data[i].fuelleft}</td>`;
+      }
+      document.getElementById("data-list").getElementsByTagName('tbody')[0].innerHTML = content;
   //[STEP 1]: Create our submit form listener
   document.getElementById("exit-game").addEventListener("click", function (e){
     e.preventDefault();
-    //[STEP 2]: Let's retrieve form data
-    let name = sessionStorage.getItem("username");
-    let points = sessionStorage.getItem("points");
-    let diff = sessionStorage.getItem("difficulty");
-    let category = sessionStorage.getItem("Category");
-    let fuelleft = sessionStorage.getItem("fuelleft");
-    //[STEP 3]: Get form values
-    let jsondata = {
-      "Name": name,
-      "Points": points,
-      "Difficulty": difficulty,
-      "Category": Category,
-      "Fuel left": fuelleft
-    };
-    //[STEP 4]: Create our AJAX settings. Take note of API key
-    /*let settings = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-apikey": APIKEY,
-        "Cache-Control": "no-cache"
-      },
-      body: JSON.stringify(jsondata),
-      beforeSend: function () {
-        document.getElementById("exit-game").disabled = true;
-      }
-    }*/
-    var settings = {
-      async: true,
-      crossDomain: true,
-      url: "https://cosmoboard-64b9.restdb.io/rest/playerstats",
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        "x-apikey": APIKEY,
-        "cache-control": "no-cache",
-      },
-      data: JSON.stringify(jsondata),
-      processData: false,
-      body: data
-    }
     
-    $.ajax(settings).done(function (response) {
-      console.log(response);
-    });
-    //[STEP 5]: Send our AJAX request over to the DB and print response of the RESTDB storage to console.
-    fetch("https://cosmoboard-64b9.restdb.io/rest/playerstats", settings)
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-        /*document.getElementById("exit-game").disabled = false;
-        document.getElementById("data-list").style.display = "block";
-        setTimeout(function(){
-          document.getElementById("data-list").style.display = "none";
-        }, 3000);
-        getInfo();
-        document.getElementById("exit-game").reset();*/
-        //sort based on points in descending order
-        data.sort((a, b) => b.points - a.points);
-
-        let content = "";
-
-        for (var i = 0; i < data.length && i < limit; i++) {
-          content = `${content}<tr id='${data[i]._id}'>
-          <td>${data[i].name}</td>
-          <td>${data[i].points}</td>
-          <td>${data[i].difficulty}</td>
-          <td>${data[i].Category}</td>
-          <td>${data[i].fuelleft}</td>`;
-        }
-        document.getElementById("data-list").getElementsByTagName('tbody')[0].innerHTML = content;
       });
   });//end click
 

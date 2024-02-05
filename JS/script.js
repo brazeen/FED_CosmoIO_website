@@ -74,16 +74,20 @@ function setApiUrl(category) {
   switch (category) {
       case 'General':
         APIUrl = 'https://opentdb.com/api.php?amount=10&category=9&difficulty=medium&type=multiple';
+        sessionStorage.setItem('CategoryName', category)
         break;
       case 'Mathematics':
         APIUrl = 'https://opentdb.com/api.php?amount=10&category=19&difficulty=medium&type=multiple'
+        sessionStorage.setItem('CategoryName', category)
         break;
       case 'music':
         APIUrl ='https://opentdb.com/api.php?amount=10&category=12&difficulty=medium&type=multiple'
+        sessionStorage.setItem('CategoryName', category)
         break;
   }
   // Log the selected difficulty to the console
   sessionStorage.setItem('Category', APIUrl);
+
   console.log(`Selected category: ${category}, API Url: ${APIUrl}`);
 }
 
@@ -140,6 +144,7 @@ document.addEventListener('DOMContentLoaded',() =>{
 
     window.location.href = "index.html"; //redirect to index.html after adding the data
   });
+  
 });
 //check for if category and difficulty is selected
 function checkSelection() {
@@ -263,6 +268,7 @@ function checkCount(){
     _result.innerHTML = `<p> You scored ${gamepoints} points. Thanks to your knowledge, Cosmo has successfully returned to Earth!</p>`;
     _checkBtn.style.display = "none";
     _exitBtn.style.display = "block";
+    
   }else{
     setTimeout(() => {
       loadQuestion()
