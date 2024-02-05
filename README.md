@@ -17,7 +17,7 @@ The more questions you answer correctly, the closer we get to a safe return!
 Compete with other players to reach the highest fuel percentage left when you reach Earth and top the leaderboards with your knowledge skills!
 Assemble your trivia knowledge and let's soar through the stars together. Get ready for an astronomical adventure that combines learning and fun. Are you ready to help Cosmo make it back to Earth?
 
-Let the cosmic quest begin! 🌌✨
+Let your cosmic quest begin! 
 
 ## Design Process
 For parts the design of this website, we decided to use a 3D JavaScript library called three.js to add planets and stars in a 3-dimensional space. The first thing that comes to mind when people think of space is a vast, never-ending void, so we 
