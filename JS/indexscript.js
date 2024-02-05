@@ -175,10 +175,10 @@ document.addEventListener("DOMContentLoaded", function (){
         "content-type": "application/json",
         "x-apikey": APIKEY,
         "cache-control": "no-cache",
-        body: data
       },
+      data: JSON.stringify(jsondata),
       processData: false,
-      data: JSON.stringify(jsondata)
+      body: data
     }
     
     $.ajax(settings).done(function (response) {
@@ -188,8 +188,8 @@ document.addEventListener("DOMContentLoaded", function (){
     fetch("https://cosmoboard-64b9.restdb.io/rest/playerstats", settings)
       .then(response => response.json())
       .then(data => {
-        /*console.log(data);
-        document.getElementById("exit-game").disabled = false;
+        console.log(data);
+        /*document.getElementById("exit-game").disabled = false;
         document.getElementById("data-list").style.display = "block";
         setTimeout(function(){
           document.getElementById("data-list").style.display = "none";
