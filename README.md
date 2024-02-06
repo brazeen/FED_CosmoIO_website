@@ -1,4 +1,8 @@
 # Project Cosmo.IO
+## Contributions
+Brandon: All 3D elements (THREE.js backgrounds, textures and models) and most of the front-end side
+Yang Yi: All Trivia API calling functions and checking answers
+Donovan: All RestDB leaderboard GET functions and POST functions to database after game is finished
 ## Overview
 !!! MUST RUN ON A LIVE SERVER (eg. GitHub Pages / VSC Live Server extension) OR website will not work!! (due to textures and models)
 GitHub Pages link: https://brazeennp.github.io/FED_CosmoIO_website/
