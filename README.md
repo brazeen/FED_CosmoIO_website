@@ -53,7 +53,7 @@ Navigation Bar
 Footer
 1. Links to all pages
 2. Summary of libraries and technologies used for the website
-3. Fully linked social media pages (kiv)fwefwefwefwejfkwejfjwelkfjweljfklwejfklwej
+3. Fully linked social media pages (they are linked to NASA's socials because this game does not actually have a social media page)
 
 Home Page
 1. 3D background with animated and appropriately textured planets and stars
