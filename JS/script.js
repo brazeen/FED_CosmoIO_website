@@ -29,6 +29,8 @@ function radioValue(){
 }
 
 
+async function loadGame(){
+}
 //set the minus amount from fuel bar 
 var minusamt;
 // Function to handle button click
@@ -133,7 +135,13 @@ function eventlistener(){
   
 }
 
-document.addEventListener('DOMContentLoaded',() =>{
+document.addEventListener('DOMContentLoaded',async function(){
+  //grab the questions
+  APIUrl = sessionStorage.getItem('Category');
+  console.log(APIUrl);
+  /*fetch API*/
+  const result = await fetch(`${APIUrl}`);
+  data = await result.json();
   loadQuestion();
   eventlistener();
   _totalQuestion.textContent = totalQuestion;
@@ -162,16 +170,11 @@ function checkSelection() {
 
 
 async function loadQuestion(){
-  /*API link*/
-  
-  APIUrl = sessionStorage.getItem('Category');
-  console.log(APIUrl);
-  /*fetch API*/
-  const result = await fetch(`${APIUrl}`);
-  const data = await result.json();
+
   // console.log(data.results[0]);
   _result.innerHTML = " ";
-  showQuestion(data.results[0]);
+  console.log(askedCount)
+  showQuestion(data.results[askedCount]);
 }
 
 function showQuestion(data){
@@ -268,12 +271,54 @@ function checkCount(){
     _result.innerHTML = `<p> You scored ${gamepoints} points. Thanks to your knowledge, Cosmo has successfully returned to Earth!</p>`;
     _checkBtn.style.display = "none";
     _exitBtn.style.display = "block";
+
+    
+    const APIKEY = "65bf102f0496a574bb2b4723";
+    posting();
+    function posting(){
+      console.log("a")
+      //[STEP 2]: Let's retrieve form data
+        
+        let name = sessionStorage.getItem("username");
+        let points = sessionStorage.getItem("points");
+        let difficulty = sessionStorage.getItem("difficulty");
+        let Category = sessionStorage.getItem("CategoryName");
+        let fuelleft = sessionStorage.getItem("fuelleft");
+        //[STEP 3]: Get form values
+        let jsondata = {
+          "name": name,
+          "points": points,
+          "difficulty": difficulty,
+          "Category": Category,
+          "fuelleft": fuelleft
+        };
+        //[STEP 4]: Create our AJAX settings. Take note of API key
+
+        var settings = {
+          async: true,
+          crossDomain: true,
+          url: "https://cosmoboard-64b9.restdb.io/rest/playerstats",
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            "x-apikey": APIKEY,
+            "cache-control": "no-cache",
+          },
+          processData: false,
+          body: JSON.stringify(jsondata)
+        }
+        fetch("https://cosmoboard-64b9.restdb.io/rest/playerstats", settings)
+          .then(response => response.json())
+          .then(response => {
+            console.log(response)
+          })
+      }
     
   }else{
     setTimeout(() => {
       loadQuestion()
       //set timeout to 4000 because API has limit of amount of request per unit time
-    }, 4000); 
+    }, 2000); 
   }
 }
 function setCount(){
