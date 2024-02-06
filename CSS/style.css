@@ -73,6 +73,7 @@ body {
     padding-top: 150px;
     /*add some margin around it*/
     margin: 5% auto;
+    margin-bottom: 30vh;
 }
 /*this is the heading that says cosmo.IO*/
 .homeheading {
@@ -118,12 +119,21 @@ body {
 }
 /*LEADERBOARD SECTION IN HOME PAGE*/
 .container-lb{
+    /*make it more centered on the first page*/
     padding-top: 15%;
     font-family: 'Orbitron', sans-serif;
     color: white;
+    padding: 100px 100px; 
     height: 75vh;
+    width: 60vw;
+    background: rgb(15, 1, 65, 0.5);
+    border-radius: 3%;
+    display: flex;
+    flex-direction: column;
+    /*when it overflows on smaller screens, allow the users to scroll around the leaderboard section to see the leaderboard*/
+    overflow-x:auto;
 }
-.container-lb h2{
+.container-lb h1{
     text-shadow: 2px 2px 5px #0f52e2;
 }
 .table{
@@ -132,6 +142,8 @@ body {
 }
 .table tbody{
     color: white;
+    /*this is the body font, dont use Orbitron as that is for the header font*/
+    font-family: 'Exo 2', sans-serif;
 }
 /*ABOUT SECTION IN HOME PAGE*/
 #aboutcard {
@@ -179,7 +191,7 @@ body {
     /*column so the texts can be on top of one another, not beside*/
     flex-direction: column;
     /*make it roughly less than 50% of the width and height*/
-    min-height: 30vh;
+    min-height: 75vh;
     min-width: 50vw;
     /*add some margin around it*/
     margin: 5% auto;
@@ -360,7 +372,7 @@ body {
 }
 
 /*------------------------------------------------GAME PAGE----------------------------------------------------------------*/
-/*prevent scrolling on the game page*/
+/*prevent scrolling on the game page but changed in mobile since it has to scroll to answer the questions*/
 .gamebackground {
     overflow-y: hidden;
 }
@@ -533,6 +545,9 @@ body {
 }
 /*code for responsive*/
 @media(max-width: 678px){
+    .gamebackground {
+        overflow-y: scroll;
+    }
     .question-title{
         font-size: 1.6rem;
     }
@@ -550,8 +565,19 @@ body {
     }
 }
 
+/*aboutcard expands*/
 @media(max-width: 810px){
     #aboutcard {
         width: 100vw;
+    }
+    .container-lb {
+        width: 100vw;
+    }
+}
+
+@media(max-width: 1070px){
+    /*make leaderboard bigger so it can be displayed without overflow*/
+    .container-lb {
+        width: 75vw;
     }
 }
