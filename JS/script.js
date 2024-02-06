@@ -272,19 +272,19 @@ function checkCount(){
     _checkBtn.style.display = "none";
     _exitBtn.style.display = "block";
 
-    
+    //TO POST DATA TO LEADERBOARD RESTDB API
     const APIKEY = "65bf102f0496a574bb2b4723";
     posting();
     function posting(){
       console.log("a")
-      //[STEP 2]: Let's retrieve form data
+      //retrieve form data
         
         let name = sessionStorage.getItem("username");
         let points = sessionStorage.getItem("points");
         let difficulty = sessionStorage.getItem("difficulty");
         let Category = sessionStorage.getItem("CategoryName");
         let fuelleft = sessionStorage.getItem("fuelleft");
-        //[STEP 3]: Get form values
+        //Get form values
         let jsondata = {
           "name": name,
           "points": points,
@@ -292,7 +292,7 @@ function checkCount(){
           "Category": Category,
           "fuelleft": fuelleft
         };
-        //[STEP 4]: Create our AJAX settings. Take note of API key
+        //Create our settings
 
         var settings = {
           async: true,

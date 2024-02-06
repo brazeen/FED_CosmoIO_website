@@ -142,15 +142,7 @@ document.addEventListener("DOMContentLoaded", function (){
   // By default, we only retrieve 10 results
   function getInfo(limit = 10, all = true) {
 
-    //[STEP 7]: Create our AJAX settings
-    /*let settings = {
-      method: "GET", //[cher] we will use GET to retrieve info
-      headers: {
-        "Content-Type": "application/json",
-        "x-apikey": APIKEY,
-        "Cache-Control": "no-cache"
-      },
-    }*/
+    //settings
     var settings = {
       async: true,
       crossDomain: true,
