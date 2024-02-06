@@ -2,6 +2,7 @@
 ## Overview
 !!! MUST RUN ON A LIVE SERVER (eg. GitHub Pages / VSC Live Server extension) OR website will not work!! (due to textures and models)
 GitHub Pages link: https://brazeennp.github.io/FED_CosmoIO_website/
+GitHub Repo link: https://github.com/brazeenNP/FED_CosmoIO_website/
 
 Oh no!
 I'm Cosmo the astronaut, and I find myself stranded on the moon with my trusty spaceship but not enough fuel to make it back home. The good news? Our spaceship runs on knowledge, and that's where **you** come in!
