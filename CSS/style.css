@@ -118,11 +118,17 @@ body {
 }
 /*LEADERBOARD SECTION IN HOME PAGE*/
 .container-lb{
+    padding-top: 15%;
+    font-family: 'Orbitron', sans-serif;
     color: white;
     height: 75vh;
 }
+.container-lb h2{
+    text-shadow: 2px 2px 5px #0f52e2;
+}
 .table{
     color: white;
+    text-shadow: 2px 2px 5px black;
 }
 .table tbody{
     color: white;
