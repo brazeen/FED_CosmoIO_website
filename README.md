@@ -4,7 +4,7 @@ Brandon: All 3D elements (THREE.js backgrounds, textures and models) and most of
 ,
 Yang Yi: All Trivia API calling functions and checking answers
 ,
-Donovan: All RestDB leaderboard GET functions and POST functions to database after game is finished
+Donovan: All RestDB leaderboard GET functions and POST functions to database after game is finished, play.html radio buttons and their style
 ## Overview
 !!! MUST RUN ON A LIVE SERVER (eg. GitHub Pages / VSC Live Server extension) OR website will not work!! (due to textures and models)
 GitHub Pages link: https://brazeennp.github.io/FED_CosmoIO_website/
@@ -136,6 +136,9 @@ Trivia API
 https://opentdb.com/
 JQuery
 https://jquery.com/
+Leaderboard RESTDb API
+https://cosmoboard-64b9.restdb.io/rest/playerstats
+APIKEY: 65bf102f0496a574bb2b4723
 
 
 
