@@ -1,8 +1,8 @@
 # Project Cosmo.IO
 ## Contributions
-Brandon: All 3D elements (THREE.js backgrounds, textures and models) and most of the front-end side
+Brandon: All 3D elements (THREE.js backgrounds, textures and models) and most of the front-end side on index, story, nav and footer
 ,
-Yang Yi: All Trivia API calling functions and checking answers
+Yang Yi: All Trivia API calling functions and checking answers, game.html displaying of questions and score
 ,
 Donovan: All RestDB leaderboard GET functions and POST functions to database after game is finished, play.html radio buttons and their style
 ## Overview
