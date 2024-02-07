@@ -237,7 +237,6 @@ function checkAnswer(){
       if (updatedValue <= 0){
         noFuel();
       }
-      console.log(updatedValue)
       //set the updated width back to the _fuelBar element
       _fuelBar.style.width = updatedValue + '%';
       
@@ -316,7 +315,7 @@ function checkCount(){
   }else{
     setTimeout(() => {
       loadQuestion()
-      //set timeout to 4000 because API has limit of amount of request per unit time
+      //set timeout 
     }, 2000); 
   }
 }

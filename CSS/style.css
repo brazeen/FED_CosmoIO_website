@@ -132,6 +132,7 @@ body {
     flex-direction: column;
     /*when it overflows on smaller screens, allow the users to scroll around the leaderboard section to see the leaderboard*/
     overflow-x:auto;
+    overflow-y: hidden;
 }
 .container-lb h1{
     text-shadow: 2px 2px 5px #0f52e2;
