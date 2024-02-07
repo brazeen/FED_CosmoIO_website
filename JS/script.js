@@ -107,7 +107,6 @@ if (document.getElementById('Mathematics') != null){
 
 
 //API--------------------------------------------------------------------------------------------------------------------
-//**HAVEN DECIDE WHETHER TO INCLUDE A PLAY AGAIN BUTTON OR LET PLAYER GO OUT OF THE GAME THAN COME BACK IN TO PLAY AGAIN**
 //get the Id 'questions' from game.html
 const _question = document.getElementById('questions');
 //get the class 'quiz-option' from game.html

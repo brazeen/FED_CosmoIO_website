@@ -2,7 +2,7 @@
 ## Contributions
 Brandon: All 3D elements (THREE.js backgrounds, textures and models) and most of the front-end side on index, story, nav and footer
 ,
-Yang Yi: All Trivia API calling functions and checking answers, game.html displaying of questions and score
+Yang Yi: All Trivia API calling functions and checking answers, game.html displaying of questions and score, checking of category picked
 ,
 Donovan: All RestDB leaderboard GET functions and POST functions to database after game is finished, play.html radio buttons and their style
 ## Overview
@@ -132,13 +132,18 @@ Threejs
 https://threejs.org/
 Bootstrap 5
 https://getbootstrap.com/
-Trivia API
-https://opentdb.com/
+
 JQuery
 https://jquery.com/
 Leaderboard RESTDb API
 https://cosmoboard-64b9.restdb.io/rest/playerstats
 APIKEY: 65bf102f0496a574bb2b4723
+
+API Links:
+https://opentdb.com/ (Trivia API)
+https://opentdb.com/api.php?amount=10&category=9&difficulty=medium&type=multiple (General url)
+https://opentdb.com/api.php?amount=10&category=19&difficulty=medium&type=multiple (Mathematics url)
+https://opentdb.com/api.php?amount=10&category=12&difficulty=medium&type=multiple (Music url)
 
 
 
