@@ -1,7 +1,14 @@
 # Project Cosmo.IO
+## Contributions
+Brandon: All 3D elements (THREE.js backgrounds, textures and models) and most of the front-end side
+,
+Yang Yi: All Trivia API calling functions and checking answers
+,
+Donovan: All RestDB leaderboard GET functions and POST functions to database after game is finished
 ## Overview
 !!! MUST RUN ON A LIVE SERVER (eg. GitHub Pages / VSC Live Server extension) OR website will not work!! (due to textures and models)
 GitHub Pages link: https://brazeennp.github.io/FED_CosmoIO_website/
+GitHub Repo link: https://github.com/brazeenNP/FED_CosmoIO_website/
 
 Oh no!
 I'm Cosmo the astronaut, and I find myself stranded on the moon with my trusty spaceship but not enough fuel to make it back home. The good news? Our spaceship runs on knowledge, and that's where **you** come in!
@@ -53,7 +60,7 @@ Navigation Bar
 Footer
 1. Links to all pages
 2. Summary of libraries and technologies used for the website
-3. Fully linked social media pages (kiv)fwefwefwefwejfkwejfjwelkfjweljfklwejfklwej
+3. Fully linked social media pages (they are linked to NASA's socials because this game does not actually have a social media page)
 
 Home Page
 1. 3D background with animated and appropriately textured planets and stars
